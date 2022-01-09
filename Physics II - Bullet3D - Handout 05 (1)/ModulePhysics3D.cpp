@@ -276,17 +276,78 @@ PhysBody3D* ModulePhysics3D::AddBody(const Cylinder& cylinder, float mass)
 // ---------------------------------------------------------
 PhysVehicle3D* ModulePhysics3D::AddVehicle(const VehicleInfo& info)
 {
+	//CHASSIS
 	btCompoundShape* comShape = new btCompoundShape();
 	shapes.add(comShape);
 
 	btCollisionShape* colShape = new btBoxShape(btVector3(info.chassis_size.x*0.5f, info.chassis_size.y*0.5f, info.chassis_size.z*0.5f));
 	shapes.add(colShape);
+	
 
 	btTransform trans;
 	trans.setIdentity();
 	trans.setOrigin(btVector3(info.chassis_offset.x, info.chassis_offset.y, info.chassis_offset.z));
 
 	comShape->addChildShape(trans, colShape);
+
+	//OJO DERECHO
+	btCollisionShape* colShape_o = new btBoxShape(btVector3(info.ojor_size.x * 0.5f, info.ojor_size.y * 0.5f, info.ojor_size.z * 0.5f));
+	shapes.add(colShape_o);
+
+
+	btTransform trans_o;
+	trans_o.setIdentity();
+	trans_o.setOrigin(btVector3(info.ojor_offset.x, info.ojor_offset.y, info.ojor_offset.z));
+
+	comShape->addChildShape(trans_o, colShape_o);
+
+	//OJO IZQUIERDO
+	btCollisionShape* colShape_oL = new btBoxShape(btVector3(info.ojol_size.x * 0.5f, info.ojol_size.y * 0.5f, info.ojol_size.z * 0.5f));
+	shapes.add(colShape_oL);
+
+
+	btTransform trans_oL;
+	trans_oL.setIdentity();
+	trans_oL.setOrigin(btVector3(info.ojol_offset.x, info.ojol_offset.y, info.ojol_offset.z));
+
+	comShape->addChildShape(trans_oL, colShape_oL);
+
+	//eje ojos
+	btCollisionShape* colShape_e = new btBoxShape(btVector3(info.eje_size.x * 0.5f, info.eje_size.y * 0.5f, info.eje_size.z * 0.5f));
+	shapes.add(colShape_e);
+
+
+	btTransform trans_e;
+	trans_e.setIdentity();
+	trans_e.setOrigin(btVector3(info.eje_offset.x, info.eje_offset.y, info.eje_offset.z));
+
+	comShape->addChildShape(trans_e, colShape_e);
+
+
+	//brazoR
+	btCollisionShape* colShape_br = new btBoxShape(btVector3(info.brazor_size.x * 0.5f, info.brazor_size.y * 0.5f, info.brazor_size.z * 0.5f));
+	shapes.add(colShape_br);
+
+
+	btTransform trans_br;
+	trans_br.setIdentity();
+	trans_br.setOrigin(btVector3(info.brazor_offset.x, info.brazor_offset.y, info.brazor_offset.z));
+
+	comShape->addChildShape(trans_br, colShape_br);
+
+	//brazoL
+	btCollisionShape* colShape_bl = new btBoxShape(btVector3(info.brazol_size.x * 0.5f, info.brazol_size.y * 0.5f, info.brazol_size.z * 0.5f));
+	shapes.add(colShape_bl);
+
+
+	btTransform trans_bl;
+	trans_bl.setIdentity();
+	trans_bl.setOrigin(btVector3(info.brazol_offset.x, info.brazol_offset.y, info.brazol_offset.z));
+
+	comShape->addChildShape(trans_bl, colShape_bl);
+
+
+
 
 	btTransform startTransform;
 	startTransform.setIdentity();

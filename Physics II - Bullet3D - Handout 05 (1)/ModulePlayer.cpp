@@ -21,9 +21,25 @@ bool ModulePlayer::Start()
 	VehicleInfo car;
 
 	// Car properties ----------------------------------------
-	car.chassis_size.Set(2, 2, 4);
+	car.chassis_size.Set(2, 1, 2);
 	car.chassis_offset.Set(0, 2, 0);
-	car.mass = 500.0f;
+
+	car.ojor_size.Set(0.7, 0.5, 1);
+	car.ojor_offset.Set(-0.45, 3.5, 0);
+
+	car.ojol_size.Set(0.7, 0.5, 1);
+	car.ojol_offset.Set(0.45, 3.5, 0);
+
+	car.eje_size.Set(0.2, 1.5, 0.2);
+	car.eje_offset.Set(0, 3, 0);
+
+	car.brazor_size.Set(0.2, 0.5, 2);
+	car.brazor_offset.Set(-1.1, 2.5, 0.3);
+
+	car.brazol_size.Set(0.2, 0.5, 2);
+	car.brazol_offset.Set(1.1, 2.5, 0.3);
+
+	car.mass = 1000.0f;
 	car.suspensionStiffness = 15.88f;
 	car.suspensionCompression = 0.83f;
 	car.suspensionDamping = 0.88f;
@@ -41,6 +57,16 @@ bool ModulePlayer::Start()
 
 	float half_width = car.chassis_size.x*0.5f;
 	float half_length = car.chassis_size.z*0.5f;
+	float half_width_o = car.ojor_size.x * 0.5f;
+	float half_length_o = car.ojor_size.z * 0.5f;
+	float half_width_ol = car.ojol_size.x * 0.5f;
+	float half_length_ol = car.ojol_size.z * 0.5f;
+	float half_width_e = car.eje_size.x * 0.5f;
+	float half_length_e = car.eje_size.z * 0.5f;
+	float half_width_br = car.brazor_size.x * 0.5f;
+	float half_length_br = car.brazor_size.z * 0.5f;
+	float half_width_bl = car.brazol_size.x * 0.5f;
+	float half_length_bl = car.brazol_size.z * 0.5f;
 	
 	vec3 direction(0,-1,0);
 	vec3 axis(-1,0,0);
