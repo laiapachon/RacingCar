@@ -9,6 +9,12 @@
 struct PhysBody3D;
 struct PhysMotor3D;
 
+struct Plants
+{
+	p2DynArray<PhysBody3D*>		phys_plants;
+	p2DynArray<Cube*>			body;
+};
+
 class ModuleSceneIntro : public Module
 {
 public:
@@ -18,9 +24,9 @@ public:
 	bool Start();
 	update_status Update(float dt);
 	bool CleanUp();
-
+	update_status PostUpdate(float dt);
 	void OnCollision(PhysBody3D* body1, PhysBody3D* body2);
-
+	void CreatePlant(const vec3 pos, Color pColorHead, Color pColorBody);
 public:
 	/*
 	PhysBody3D* pb_snake[MAX_SNAKE];
@@ -29,6 +35,8 @@ public:
 	PhysBody3D* pb_snake2[MAX_SNAKE];
 	Sphere s_snake2[MAX_SNAKE];
 	*/
+	p2DynArray<Primitive*>	primitives;
+	p2DynArray<Primitive*>	winPrimitives;
 
 	PhysBody3D* pb_chassis;
 	Cube p_chassis;
@@ -201,4 +209,14 @@ public:
 
 	//map
 	Cube ground;
+
+	//Plants
+	Plants plants;
+	bool pickUpPlant1 = false;
+	bool pickUpPlant2 = false;
+	bool pickUpPlant3 = false;
+	bool pickUpPlant4 = false;
+	bool pickUpPlant5 = false;
+	int countPlants = 0;
+	//int countHospitalPatients = 0;
 };
