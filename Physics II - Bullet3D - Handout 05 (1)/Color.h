@@ -33,3 +33,5 @@ extern Color White;
 extern Color Yellow;
 extern Color Grey;
 extern Color Oxid;
+extern Color Brown1;
+extern Color Cobre;
