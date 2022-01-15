@@ -52,12 +52,13 @@ update_status ModuleCamera3D::Update(float dt)
 	Reference += newPos;
 
 	Position.x = App->player->vehicle->vehicle->getChassisWorldTransform().getOrigin().getX() - 10 * App->player->vehicle->vehicle->getForwardVector().getX();
-	Position.y = App->player->vehicle->vehicle->getChassisWorldTransform().getOrigin().getY() + 5 * App->player->vehicle->vehicle->getUpAxis();
+	Position.y = App->player->vehicle->vehicle->getChassisWorldTransform().getOrigin().getY() + 5 * App->player->vehicle->vehicle->getForwardVector().getY()+10;
 	Position.z = App->player->vehicle->vehicle->getChassisWorldTransform().getOrigin().getZ() - 10 * App->player->vehicle->vehicle->getForwardVector().getZ();
 	float playerPosX = App->player->vehicle->vehicle->getChassisWorldTransform().getOrigin().getX() + 10 * App->player->vehicle->vehicle->getForwardVector().getX();
 	float playerPosZ = App->player->vehicle->vehicle->getChassisWorldTransform().getOrigin().getZ() + 10* App->player->vehicle->vehicle->getForwardVector().getZ();
+	float playerPosY = App->player->vehicle->vehicle->getChassisWorldTransform().getOrigin().getY() + 10 * App->player->vehicle->vehicle->getForwardVector().getY();
 
-	LookAt(vec3(playerPosX, 1, playerPosZ));
+	LookAt(vec3(playerPosX, playerPosY, playerPosZ));
 
 	if(App->input->GetKey(SDL_SCANCODE_R) == KEY_REPEAT) newPos.y += speed;
 	if(App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT) newPos.y -= speed;
