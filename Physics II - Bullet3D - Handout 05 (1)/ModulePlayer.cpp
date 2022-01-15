@@ -128,10 +128,10 @@ bool ModulePlayer::Start()
 	// ---------------------------------------------------------
 // Window info print
 	char title[200];
-	sprintf_s(title, "%.1f Km/h || Plants taken: %d/5 || Plants in the save spot %d/5 || Time: %.2f",
-		vehicle->GetKmh(), App->scene_intro->countPlants, App->scene_intro->countCarriedPlants, count);
-	App->window->SetTitle(title);
-
+	//sprintf_s(title, "%.1f Km/h || Plants taken: %d/5 || Plants in the save spot %d/5 || Time: %.2f",
+		//vehicle->GetKmh(), App->scene_intro->countPlants, App->scene_intro->countCarriedPlants, count);
+	//App->window->SetTitle(title);
+	timer.Start();
 	return true;
 }
 
@@ -148,60 +148,78 @@ update_status ModulePlayer::Update(float dt)
 {
 	turn = acceleration = brake = 0.0f;
 
-	if(App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
-	{
-		acceleration = MAX_ACCELERATION;
-	}
+	
 
-	if(App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
-	{
-		if(turn < TURN_DEGREES)
-			turn +=  TURN_DEGREES;
-	}
-
-	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-	{
-		if(turn > -TURN_DEGREES)
-			turn -= TURN_DEGREES;
-	}
-
-	if(App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-	{
-		brake = BRAKE_POWER;
-	}
-
-	vehicle->ApplyEngineForce(acceleration);
-	vehicle->Turn(turn);
-	vehicle->Brake(brake);
+	
 
 	vehicle->Render();
-
+	uint miliseconds = timer.Read() % 1000;
+	uint seconds = (timer.Read() / 1000) % 60;
+	uint minutes = (timer.Read() / 1000) / 60;
 	char title[80];
-	sprintf_s(title, "%.1f Km/h", vehicle->GetKmh());
-	App->window->SetTitle(title);
+	
 
+	if (minutes >= 1) {
+		timer.Stop();
+		sprintf_s(title, "Wasted");
+		App->window->SetTitle(title);
+		if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
+		{
+			timer.Start();
+		}
+	}
+	else {
+		sprintf_s(title, "Time: %02d:%02d:%03d %.1f Km/h", minutes, seconds, miliseconds, vehicle->GetKmh());
+		App->window->SetTitle(title);
+		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+		{
+			acceleration = MAX_ACCELERATION;
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+		{
+			if (turn < TURN_DEGREES)
+				turn += TURN_DEGREES;
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+		{
+			if (turn > -TURN_DEGREES)
+				turn -= TURN_DEGREES;
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+		{
+			brake = BRAKE_POWER;
+		}
+		vehicle->ApplyEngineForce(acceleration);
+		vehicle->Turn(turn);
+		vehicle->Brake(brake);
+
+	}
+	
 	return UPDATE_CONTINUE;
 }
 
-void ModulePlayer::ResetGame()
-{
-	vehicle->SetVelocity(0, 0, 0);
-	mat4x4 transform;
-	transform.rotate(0, vec3(0, 0, 1));
-	vehicle->SetTransform(&transform);
-	vehicle->SetPos(-17, 0, -120);
-
-
-	timer.Start();
-	App->scene_intro->takePlant1 = false;
-	App->scene_intro->takePlant2 = false;
-	App->scene_intro->takePlant3 = false;
-	App->scene_intro->takePlant4 = false;
-	App->scene_intro->takePlant5 = false;
-	App->scene_intro->countPlants = 0;
-	App->scene_intro->countCarriedPlants = 0;
-	App->scene_intro->walleFree = true;
-}
+//void ModulePlayer::ResetGame()
+//{
+//	vehicle->SetVelocity(0, 0, 0);
+//	mat4x4 transform;
+//	transform.rotate(0, vec3(0, 0, 1));
+//	vehicle->SetTransform(&transform);
+//	vehicle->SetPos(-17, 0, -120);
+//
+//
+//	timer.Start();
+//	App->scene_intro->takePlant1 = false;
+//	App->scene_intro->takePlant2 = false;
+//	App->scene_intro->takePlant3 = false;
+//	App->scene_intro->takePlant4 = false;
+//	App->scene_intro->takePlant5 = false;
+//	App->scene_intro->countPlants = 0;
+//	App->scene_intro->countCarriedPlants = 0;
+//	App->scene_intro->walleFree = true;
+//}
 
 //void ModulePlayer::SetWinPosition()
 //{

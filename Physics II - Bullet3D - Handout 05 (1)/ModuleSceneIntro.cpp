@@ -251,6 +251,72 @@ bool ModuleSceneIntro::Start()
 	cubes.add(cube35);
 	physBodyCubes.add(App->physics->AddBody(*cube35, 0));
 
+	//OBSTACULOS
+
+	cube143 = new Cube(4, 40, 4);
+	cube143->SetPos(-48, 32, 638);
+	cube143->color = Oxid;
+	cubes.add(cube143);
+	physBodyCubes.add(App->physics->AddBody(*cube143, 0));
+
+	cube144 = new Cube(4, 40, 4);
+	cube144->SetPos(-208, 32, 738);
+	cube144->color = Oxid;
+	cubes.add(cube144);
+	physBodyCubes.add(App->physics->AddBody(*cube144, 0));
+
+	cube145 = new Cube(4, 40, 4);
+	cube145->SetPos(-308, 32, 775);
+	cube145->color = Oxid;
+	cubes.add(cube145);
+	physBodyCubes.add(App->physics->AddBody(*cube145, 0));
+	
+
+	cube146 = new Cube(4, 40, 4);
+	cube146->SetPos(-288, 32, 780);
+	cube146->color = Oxid;
+	cubes.add(cube146);
+	physBodyCubes.add(App->physics->AddBody(*cube146, 0));
+
+	cube152 = new Cube(4, 40, 4);
+	cube152->SetPos(-275, 32, 775);//103
+	cube152->color = Oxid;
+	cubes.add(cube152);
+	physBodyCubes.add(App->physics->AddBody(*cube152, 0));
+
+	cube147 = new Cube(4, 40, 4);
+	cube147->SetPos(-42, 32, 658);
+	cube147->color = Oxid;
+	cubes.add(cube147);
+	physBodyCubes.add(App->physics->AddBody(*cube147, 0));
+
+	cube148 = new Cube(4, 40, 4);
+	cube148->SetPos(-54, 32, 678);
+	cube148->color = Oxid;
+	cubes.add(cube148);
+	physBodyCubes.add(App->physics->AddBody(*cube148, 0));
+
+	cube149 = new Cube(4, 40, 4);
+	cube149->SetPos(-42, 32, 698);
+	cube149->color = Oxid;
+	cubes.add(cube149);
+	physBodyCubes.add(App->physics->AddBody(*cube149, 0));
+
+	cube150 = new Cube(4, 40, 4);
+	cube150->SetPos(-54, 32, 718);
+	cube150->color = Oxid;
+	cubes.add(cube150);
+	physBodyCubes.add(App->physics->AddBody(*cube150, 0));
+
+	cube151 = new Cube(4, 40, 4);
+	cube151->SetPos(-42, 32, 738);
+	cube151->color = Oxid;
+	cubes.add(cube151);
+	physBodyCubes.add(App->physics->AddBody(*cube151, 0));
+
+	//////////////////////////////////////////////////////////
+
+
 	cube36 = new Cube(20, 1, 20);
 	cube36->SetPos(-48, 12, 658);
 	cube36->color = Oxid;
@@ -455,6 +521,8 @@ bool ModuleSceneIntro::Start()
 	cubes.add(cube118);
 	physBodyCubes.add(App->physics->AddBody(*cube118, 0));
 
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	//PAREDES IZQ
 	cube42 = new Cube(2, 2, 60);
 	cube42->SetPos(14, 2, 70);
@@ -605,6 +673,8 @@ bool ModuleSceneIntro::Start()
 	cube65->color = Cobre;
 	cubes.add(cube65);
 	physBodyCubes.add(App->physics->AddBody(*cube65, 0));
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//PAREDES DER
 	cube66 = new Cube(2, 2, 60);
@@ -757,6 +827,7 @@ bool ModuleSceneIntro::Start()
 	cubes.add(cube90);
 	physBodyCubes.add(App->physics->AddBody(*cube90, 0));
 
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//FINAL
 	cube119 = new Cube(2, 2, 2);
@@ -806,6 +877,8 @@ bool ModuleSceneIntro::Start()
 	cube126->color = Green;
 	cubes.add(cube126);
 	physBodyCubes.add(App->physics->AddBody(*cube126, 0));
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//CAMINOS TRAMPA
 	//1
@@ -869,6 +942,40 @@ bool ModuleSceneIntro::Start()
 	cubes.add(cube136);
 	physBodyCubes.add(App->physics->AddBody(*cube136, 0));
 
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//obstaculos1
+	cube153 = new Cube(4, 40, 4);
+	cube153->SetPos(-308, 32, 832);
+	cube153->color = Oxid;
+	cubes.add(cube153);
+	physBodyCubes.add(App->physics->AddBody(*cube153, 0));
+
+	cube154 = new Cube(4, 40, 4);
+	cube154->SetPos(-318, 32, 862);
+	cube154->color = Oxid;
+	cubes.add(cube154);
+	physBodyCubes.add(App->physics->AddBody(*cube154, 0));
+
+	cube155 = new Cube(4, 40, 4);
+	cube155->SetPos(-335, 32, 852);
+	cube155->color = Oxid;
+	cubes.add(cube155);
+	physBodyCubes.add(App->physics->AddBody(*cube155, 0));
+
+	cube156 = new Cube(4, 40, 4);
+	cube156->SetPos(-358, 32, 862);
+	cube156->color = Oxid;
+	cubes.add(cube156);
+	physBodyCubes.add(App->physics->AddBody(*cube156, 0));
+
+	cube157 = new Cube(4, 40, 4);
+	cube157->SetPos(-375, 32, 852);
+	cube157->color = Oxid;
+	cubes.add(cube157);
+	physBodyCubes.add(App->physics->AddBody(*cube157, 0));
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	//2
 	cube137 = new Cube(20, 1, 20);
 	cube137->SetPos(-228, 12, 798);
@@ -906,7 +1013,24 @@ bool ModuleSceneIntro::Start()
 	cubes.add(cube142);
 	physBodyCubes.add(App->physics->AddBody(*cube142, 0));
 
+	//obstaculos2
+	cube158 = new Cube(4, 40, 4);
+	cube158->SetPos(-22, 32, 818);
+	cube158->color = Oxid;
+	cubes.add(cube158);
+	physBodyCubes.add(App->physics->AddBody(*cube158, 0));
 
+	cube159 = new Cube(4, 40, 4);
+	cube159->SetPos(-232, 32, 838);
+	cube159->color = Oxid;
+	cubes.add(cube159);
+	physBodyCubes.add(App->physics->AddBody(*cube159, 0));
+
+	cube160 = new Cube(4, 40, 4);
+	cube160->SetPos(-222, 32, 858);
+	cube160->color = Oxid;
+	cubes.add(cube160);
+	physBodyCubes.add(App->physics->AddBody(*cube160, 0));
 
 
 	return ret;
@@ -1069,96 +1193,96 @@ update_status ModuleSceneIntro::Update(float dt)
 	cube141->Render();
 	cube142->Render();
 
-	// Plants Render
-	if (!takePlant1 && !inSceneWin)
-	{
-	
-		plants.body[0]->Render();
-	}
-	if (!takePlant2 && takePlant1 && walleFree)
-	{
-		plants.body[1]->Render();
-	}
-	if (!takePlant3 && takePlant2 && walleFree)
-	{
-		plants.body[2]->Render();
-	}
-	if (!takePlant4 && takePlant3 && walleFree)
-	{
-		plants.body[3]->Render();
-	}
-	if (!takePlant5 && takePlant4 && walleFree)
-	{
-		plants.body[4]->Render();
-	}
+	//// Plants Render
+	//if (!takePlant1 && !inSceneWin)
+	//{
+	//
+	//	plants.body[0]->Render();
+	//}
+	//if (!takePlant2 && takePlant1 && walleFree)
+	//{
+	//	plants.body[1]->Render();
+	//}
+	//if (!takePlant3 && takePlant2 && walleFree)
+	//{
+	//	plants.body[2]->Render();
+	//}
+	//if (!takePlant4 && takePlant3 && walleFree)
+	//{
+	//	plants.body[3]->Render();
+	//}
+	//if (!takePlant5 && takePlant4 && walleFree)
+	//{
+	//	plants.body[4]->Render();
+	//}
 
-	/*if (countCarriedPlants == 5 && countPlants == 5)
-	{
-		winDuration = winTimer.Read() * 0.001f;
-		Win();
-		for (uint i = 0; i < winPrimitives.Count(); i++)
-			winPrimitives[i]->Update();
-	}*/
+	///*if (countCarriedPlants == 5 && countPlants == 5)
+	//{
+	//	winDuration = winTimer.Read() * 0.001f;
+	//	Win();
+	//	for (uint i = 0; i < winPrimitives.Count(); i++)
+	//		winPrimitives[i]->Update();
+	//}*/
 
 	return UPDATE_CONTINUE;
 }
 
 void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
-	// All cases for collisions with patients or hospital sensor
-	if (body1->is_sensor && !inSceneWin)
-	{
-		if (body1 == plants.phys_plants[0]&& walleFree)
-		{
-			if (countPlants < 1)
-			{
-				countPlants = 1;
-				takePlant1 = true;
-				walleFree = false;
-				//App->audio->PlayFx(pickupFx);
-			}
-		}
+	//// All cases for collisions with patients or hospital sensor
+	//if (body1->is_sensor && !inSceneWin)
+	//{
+	//	if (body1 == plants.phys_plants[0]&& walleFree)
+	//	{
+	//		if (countPlants < 1)
+	//		{
+	//			countPlants = 1;
+	//			takePlant1 = true;
+	//			walleFree = false;
+	//			//App->audio->PlayFx(pickupFx);
+	//		}
+	//	}
 
-		if (body1 == plants.phys_plants[1] && takePlant1 && walleFree)
-		{
-			if (countPlants < 2)
-			{
-				takePlant2 = true;
-				walleFree = false;
-				//App->audio->PlayFx(pickupFx);
-				countPlants = 2;
-			}
-		}
-		if (body1 == plants.phys_plants[2] && takePlant2 && walleFree)
-		{
-			if (countPlants < 3)
-			{
-				takePlant3 = true;
-				walleFree = false;
-				//App->audio->PlayFx(pickupFx);
-				countPlants = 3;
-			}
-		}
-		if (body1 == plants.phys_plants[3] && takePlant3 && walleFree)
-		{
-			if (countPlants < 4)
-			{
-				takePlant4 = true;
-				walleFree = false;
-				//App->audio->PlayFx(pickupFx);
-				countPlants = 4;
-			}
-		}
-		if (body1 == plants.phys_plants[4] && takePlant4 && walleFree)
-		{
-			if (countPlants < 5)
-			{
-				takePlant5 = true;
-				walleFree = false;
-				//App->audio->PlayFx(pickupFx);
-				countPlants = 5;
-			}
-		}
+	//	if (body1 == plants.phys_plants[1] && takePlant1 && walleFree)
+	//	{
+	//		if (countPlants < 2)
+	//		{
+	//			takePlant2 = true;
+	//			walleFree = false;
+	//			//App->audio->PlayFx(pickupFx);
+	//			countPlants = 2;
+	//		}
+	//	}
+	//	if (body1 == plants.phys_plants[2] && takePlant2 && walleFree)
+	//	{
+	//		if (countPlants < 3)
+	//		{
+	//			takePlant3 = true;
+	//			walleFree = false;
+	//			//App->audio->PlayFx(pickupFx);
+	//			countPlants = 3;
+	//		}
+	//	}
+	//	if (body1 == plants.phys_plants[3] && takePlant3 && walleFree)
+	//	{
+	//		if (countPlants < 4)
+	//		{
+	//			takePlant4 = true;
+	//			walleFree = false;
+	//			//App->audio->PlayFx(pickupFx);
+	//			countPlants = 4;
+	//		}
+	//	}
+	//	if (body1 == plants.phys_plants[4] && takePlant4 && walleFree)
+	//	{
+	//		if (countPlants < 5)
+	//		{
+	//			takePlant5 = true;
+	//			walleFree = false;
+	//			//App->audio->PlayFx(pickupFx);
+	//			countPlants = 5;
+	//		}
+	//	}
 		/*if (body1 == hospitalSensor) && !ambulanceFree)
 		{
 			ambulanceFree = true;
@@ -1180,7 +1304,7 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 				winTimer.Start();
 			}
 		}*/
-	}
+	//}
 }
 
 update_status ModuleSceneIntro::PostUpdate(float dt)
@@ -1188,11 +1312,11 @@ update_status ModuleSceneIntro::PostUpdate(float dt)
 	for (uint i = 0; i < primitives.Count(); i++)
 		primitives[i]->Render();
 	
-	if (countCarriedPlants == 5 && countPlants == 5)
+	/*if (countCarriedPlants == 5 && countPlants == 5)
 	{
 		for (uint i = 0; i < winPrimitives.Count(); i++)
 			winPrimitives[i]->Render();
-	}
+	}*/
 
 	return UPDATE_CONTINUE;
 }
@@ -1206,13 +1330,13 @@ void ModuleSceneIntro::CreatePlant(const vec3 pos, Color pColorHead, Color pColo
 	c = new Cube(0.5, 2, 0.5);
 	c->color = pColorBody;
 	c->SetPos(pos.x, pos.y + 1.5, pos.z);
-	plants.body.PushBack(c);
+	//plants.body.PushBack(c);
 
 	// Create a sensor to be able to pick patients
 	Cube* sensor;
 	sensor = new Cube(1, 3, 1);
 	sensor->SetPos(pos.x, pos.y + 2, pos.z);
-	plants.phys_plants.PushBack(App->physics->AddBody(*sensor, this, 0.0f, true));
+	//plants.phys_plants.PushBack(App->physics->AddBody(*sensor, this, 0.0f, true));
 }
 
 void ModuleSceneIntro::CreatePSaveSpotSensor(const vec3 pos)
@@ -1221,5 +1345,5 @@ void ModuleSceneIntro::CreatePSaveSpotSensor(const vec3 pos)
 	Cube* sensor;
 	sensor = new Cube(2, 4, 16);
 	sensor->SetPos(pos.x, pos.y + 1.5, pos.z);
-	PSaveSpotSensor = App->physics->AddBody(*sensor, this, 0.0f, true);
+	//PSaveSpotSensor = App->physics->AddBody(*sensor, this, 0.0f, true);
 }

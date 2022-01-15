@@ -204,6 +204,16 @@ public:
 	Cube* cube148;
 	Cube* cube149;
 	Cube* cube150;
+	Cube* cube151;
+	Cube* cube152;
+	Cube* cube153;
+	Cube* cube154;
+	Cube* cube155;
+	Cube* cube156;
+	Cube* cube157;
+	Cube* cube158;
+	Cube* cube159;
+	Cube* cube160;
 
 
 
