@@ -1070,33 +1070,29 @@ update_status ModuleSceneIntro::Update(float dt)
 	cube142->Render();
 
 	// Plants Render
-	/*if (!pickUpPatient1 && !inSceneWin)
+	if (!takePlant1 && !inSceneWin)
 	{
-		patients.head[0].Render();
-		patients.body[0]->Render();
+	
+		plants.body[0]->Render();
 	}
-	if (!pickUpPatient2 && pickUpPatient1 && ambulanceFree)
+	if (!takePlant2 && takePlant1 && walleFree)
 	{
-		patients.head[1].Render();
-		patients.body[1]->Render();
+		plants.body[1]->Render();
 	}
-	if (!pickUpPatient3 && pickUpPatient2 && ambulanceFree)
+	if (!takePlant3 && takePlant2 && walleFree)
 	{
-		patients.head[2].Render();
-		patients.body[2]->Render();
+		plants.body[2]->Render();
 	}
-	if (!pickUpPatient4 && pickUpPatient3 && ambulanceFree)
+	if (!takePlant4 && takePlant3 && walleFree)
 	{
-		patients.head[3].Render();
-		patients.body[3]->Render();
+		plants.body[3]->Render();
 	}
-	if (!pickUpPatient5 && pickUpPatient4 && ambulanceFree)
+	if (!takePlant5 && takePlant4 && walleFree)
 	{
-		patients.head[4].Render();
-		patients.body[4]->Render();
-	}*/
+		plants.body[4]->Render();
+	}
 
-	/*if (countHospitalPatients == 5 && countPatients == 5)
+	/*if (countCarriedPlants == 5 && countPlants == 5)
 	{
 		winDuration = winTimer.Read() * 0.001f;
 		Win();
@@ -1110,60 +1106,60 @@ update_status ModuleSceneIntro::Update(float dt)
 void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
 	// All cases for collisions with patients or hospital sensor
-	/*if (body1->is_sensor && !inSceneWin)
+	if (body1->is_sensor && !inSceneWin)
 	{
-		if (body1 == patients.phys_patients[0] && ambulanceFree)
+		if (body1 == plants.phys_plants[0]&& walleFree)
 		{
-			if (countPatients < 1)
+			if (countPlants < 1)
 			{
-				countPatients = 1;
-				pickUpPatient1 = true;
-				ambulanceFree = false;
-				App->audio->PlayFx(pickupFx);
+				countPlants = 1;
+				takePlant1 = true;
+				walleFree = false;
+				//App->audio->PlayFx(pickupFx);
 			}
 		}
 
-		if (body1 == patients.phys_patients[1] && pickUpPatient1 && ambulanceFree)
+		if (body1 == plants.phys_plants[1] && takePlant1 && walleFree)
 		{
-			if (countPatients < 2)
+			if (countPlants < 2)
 			{
-				pickUpPatient2 = true;
-				ambulanceFree = false;
-				App->audio->PlayFx(pickupFx);
-				countPatients = 2;
+				takePlant2 = true;
+				walleFree = false;
+				//App->audio->PlayFx(pickupFx);
+				countPlants = 2;
 			}
 		}
-		if (body1 == patients.phys_patients[2] && pickUpPatient2 && ambulanceFree)
+		if (body1 == plants.phys_plants[2] && takePlant2 && walleFree)
 		{
-			if (countPatients < 3)
+			if (countPlants < 3)
 			{
-				pickUpPatient3 = true;
-				ambulanceFree = false;
-				App->audio->PlayFx(pickupFx);
-				countPatients = 3;
+				takePlant3 = true;
+				walleFree = false;
+				//App->audio->PlayFx(pickupFx);
+				countPlants = 3;
 			}
 		}
-		if (body1 == patients.phys_patients[3] && pickUpPatient3 && ambulanceFree)
+		if (body1 == plants.phys_plants[3] && takePlant3 && walleFree)
 		{
-			if (countPatients < 4)
+			if (countPlants < 4)
 			{
-				pickUpPatient4 = true;
-				ambulanceFree = false;
-				App->audio->PlayFx(pickupFx);
-				countPatients = 4;
+				takePlant4 = true;
+				walleFree = false;
+				//App->audio->PlayFx(pickupFx);
+				countPlants = 4;
 			}
 		}
-		if (body1 == patients.phys_patients[4] && pickUpPatient4 && ambulanceFree)
+		if (body1 == plants.phys_plants[4] && takePlant4 && walleFree)
 		{
-			if (countPatients < 5)
+			if (countPlants < 5)
 			{
-				pickUpPatient5 = true;
-				ambulanceFree = false;
-				App->audio->PlayFx(pickupFx);
-				countPatients = 5;
+				takePlant5 = true;
+				walleFree = false;
+				//App->audio->PlayFx(pickupFx);
+				countPlants = 5;
 			}
 		}
-		if (body1 == hospitalSensor && !ambulanceFree)
+		/*if (body1 == hospitalSensor) && !ambulanceFree)
 		{
 			ambulanceFree = true;
 			App->audio->StopFx(App->player->sirenFx);
@@ -1183,8 +1179,8 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 				inSceneWin = true;
 				winTimer.Start();
 			}
-		}
-	}*/
+		}*/
+	}
 }
 
 update_status ModuleSceneIntro::PostUpdate(float dt)
@@ -1192,7 +1188,7 @@ update_status ModuleSceneIntro::PostUpdate(float dt)
 	for (uint i = 0; i < primitives.Count(); i++)
 		primitives[i]->Render();
 	
-	if (/*countHospitalPatients == 5 &&*/ countPlants == 5)
+	if (countCarriedPlants == 5 && countPlants == 5)
 	{
 		for (uint i = 0; i < winPrimitives.Count(); i++)
 			winPrimitives[i]->Render();
@@ -1216,5 +1212,14 @@ void ModuleSceneIntro::CreatePlant(const vec3 pos, Color pColorHead, Color pColo
 	Cube* sensor;
 	sensor = new Cube(1, 3, 1);
 	sensor->SetPos(pos.x, pos.y + 2, pos.z);
-	//plants.phys_plants.PushBack(App->physics->AddBody(*sensor, this, 0.0f, true));
+	plants.phys_plants.PushBack(App->physics->AddBody(*sensor, this, 0.0f, true));
+}
+
+void ModuleSceneIntro::CreatePSaveSpotSensor(const vec3 pos)
+{
+	// Create a cube to render a building
+	Cube* sensor;
+	sensor = new Cube(2, 4, 16);
+	sensor->SetPos(pos.x, pos.y + 1.5, pos.z);
+	PSaveSpotSensor = App->physics->AddBody(*sensor, this, 0.0f, true);
 }

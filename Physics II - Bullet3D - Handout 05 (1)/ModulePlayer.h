@@ -14,8 +14,9 @@ class ModulePlayer : public Module
 public:
 	ModulePlayer(Application* app, bool start_enabled = true);
 	virtual ~ModulePlayer();
-
+	void ResetGame();
 	bool Start();
+	void SetWinPosition();
 	update_status Update(float dt);
 	bool CleanUp();
 
@@ -25,4 +26,6 @@ public:
 	float turn;
 	float acceleration;
 	float brake;
+	Timer timer;
+	float count = 0;
 };

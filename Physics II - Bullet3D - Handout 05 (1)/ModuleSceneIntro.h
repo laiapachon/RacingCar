@@ -27,6 +27,7 @@ public:
 	update_status PostUpdate(float dt);
 	void OnCollision(PhysBody3D* body1, PhysBody3D* body2);
 	void CreatePlant(const vec3 pos, Color pColorHead, Color pColorBody);
+	void CreatePSaveSpotSensor(const vec3 pos);
 public:
 	/*
 	PhysBody3D* pb_snake[MAX_SNAKE];
@@ -212,11 +213,18 @@ public:
 
 	//Plants
 	Plants plants;
-	bool pickUpPlant1 = false;
-	bool pickUpPlant2 = false;
-	bool pickUpPlant3 = false;
-	bool pickUpPlant4 = false;
-	bool pickUpPlant5 = false;
+	PhysBody3D* PSaveSpotSensor;
+	bool takePlant1 = false;
+	bool takePlant2 = false;
+	bool takePlant3 = false;
+	bool takePlant4 = false;
+	bool takePlant5 = false;
 	int countPlants = 0;
-	//int countHospitalPatients = 0;
+	int countCarriedPlants = 0;
+	bool walleFree = true;
+	bool inSceneWin = false;
+
+	/*private:
+		Timer winTimer;
+		float winDuration;*/
 };

@@ -125,6 +125,13 @@ bool ModulePlayer::Start()
 	vehicle = App->physics->AddVehicle(car);
 	vehicle->SetPos(0, 1.5, 10);
 	
+	// ---------------------------------------------------------
+// Window info print
+	char title[200];
+	sprintf_s(title, "%.1f Km/h || Plants taken: %d/5 || Plants in the save spot %d/5 || Time: %.2f",
+		vehicle->GetKmh(), App->scene_intro->countPlants, App->scene_intro->countCarriedPlants, count);
+	App->window->SetTitle(title);
+
 	return true;
 }
 
@@ -176,5 +183,31 @@ update_status ModulePlayer::Update(float dt)
 	return UPDATE_CONTINUE;
 }
 
+void ModulePlayer::ResetGame()
+{
+	vehicle->SetVelocity(0, 0, 0);
+	mat4x4 transform;
+	transform.rotate(0, vec3(0, 0, 1));
+	vehicle->SetTransform(&transform);
+	vehicle->SetPos(-17, 0, -120);
 
 
+	timer.Start();
+	App->scene_intro->takePlant1 = false;
+	App->scene_intro->takePlant2 = false;
+	App->scene_intro->takePlant3 = false;
+	App->scene_intro->takePlant4 = false;
+	App->scene_intro->takePlant5 = false;
+	App->scene_intro->countPlants = 0;
+	App->scene_intro->countCarriedPlants = 0;
+	App->scene_intro->walleFree = true;
+}
+
+//void ModulePlayer::SetWinPosition()
+//{
+//	vehicle->SetVelocity(0, 0, 0);
+//	mat4x4 transform;
+//	transform.rotate(0, vec3(0, 0, 1));
+//	vehicle->SetTransform(&transform);
+//	vehicle->SetPos(0, 0, -90);
+//}
