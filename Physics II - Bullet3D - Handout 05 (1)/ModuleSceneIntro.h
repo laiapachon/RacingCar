@@ -9,9 +9,9 @@
 struct PhysBody3D;
 struct PhysMotor3D;
 
-struct Plants
+struct Plant
 {
-	p2DynArray<PhysBody3D*>		phys_plants;
+	p2DynArray<PhysBody3D*>		phys_plant;
 	p2DynArray<Cube*>			body;
 };
 
@@ -222,15 +222,11 @@ public:
 	Cube ground;
 
 	//Plants
-	Plants plants;
+	Plant plant;
 	PhysBody3D* PSaveSpotSensor;
-	bool takePlant1 = false;
-	bool takePlant2 = false;
-	bool takePlant3 = false;
-	bool takePlant4 = false;
-	bool takePlant5 = false;
-	int countPlants = 0;
-	int countCarriedPlants = 0;
+	bool takePlant = false;
+	int countPlant = 0;
+	int countCarriedPlant = 0;
 	bool walleFree = true;
 	bool inSceneWin = false;
 

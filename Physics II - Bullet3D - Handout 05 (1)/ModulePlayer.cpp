@@ -128,8 +128,8 @@ bool ModulePlayer::Start()
 	// ---------------------------------------------------------
 // Window info print
 	char title[200];
-	//sprintf_s(title, "%.1f Km/h || Plants taken: %d/5 || Plants in the save spot %d/5 || Time: %.2f",
-		//vehicle->GetKmh(), App->scene_intro->countPlants, App->scene_intro->countCarriedPlants, count);
+	//sprintf_s(title, "%.1f Km/h || Time: %.2f",
+		//vehicle->GetKmh(), App->scene_intro-> count);
 	//App->window->SetTitle(title);
 	timer.Start();
 	return true;
@@ -208,16 +208,9 @@ update_status ModulePlayer::Update(float dt)
 //	transform.rotate(0, vec3(0, 0, 1));
 //	vehicle->SetTransform(&transform);
 //	vehicle->SetPos(-17, 0, -120);
-//
-//
+
 //	timer.Start();
-//	App->scene_intro->takePlant1 = false;
-//	App->scene_intro->takePlant2 = false;
-//	App->scene_intro->takePlant3 = false;
-//	App->scene_intro->takePlant4 = false;
-//	App->scene_intro->takePlant5 = false;
-//	App->scene_intro->countPlants = 0;
-//	App->scene_intro->countCarriedPlants = 0;
+//	App->scene_intro->takePlant = false;
 //	App->scene_intro->walleFree = true;
 //}
 

@@ -1199,24 +1199,9 @@ update_status ModuleSceneIntro::Update(float dt)
 	//
 	//	plants.body[0]->Render();
 	//}
-	//if (!takePlant2 && takePlant1 && walleFree)
-	//{
-	//	plants.body[1]->Render();
-	//}
-	//if (!takePlant3 && takePlant2 && walleFree)
-	//{
-	//	plants.body[2]->Render();
-	//}
-	//if (!takePlant4 && takePlant3 && walleFree)
-	//{
-	//	plants.body[3]->Render();
-	//}
-	//if (!takePlant5 && takePlant4 && walleFree)
-	//{
-	//	plants.body[4]->Render();
-	//}
 
-	///*if (countCarriedPlants == 5 && countPlants == 5)
+
+	///*if (countCarriedPlant == 1 && countPlant == 1)
 	//{
 	//	winDuration = winTimer.Read() * 0.001f;
 	//	Win();
@@ -1232,56 +1217,18 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 	//// All cases for collisions with patients or hospital sensor
 	//if (body1->is_sensor && !inSceneWin)
 	//{
-	//	if (body1 == plants.phys_plants[0]&& walleFree)
+	//	if (body1 == plant.phys_plant[0]&& walleFree)
 	//	{
-	//		if (countPlants < 1)
+	//		if (countPlant < 1)
 	//		{
-	//			countPlants = 1;
-	//			takePlant1 = true;
+	//			countPlant = 1;
+	//			takePlant = true;
 	//			walleFree = false;
 	//			//App->audio->PlayFx(pickupFx);
 	//		}
 	//	}
 
-	//	if (body1 == plants.phys_plants[1] && takePlant1 && walleFree)
-	//	{
-	//		if (countPlants < 2)
-	//		{
-	//			takePlant2 = true;
-	//			walleFree = false;
-	//			//App->audio->PlayFx(pickupFx);
-	//			countPlants = 2;
-	//		}
-	//	}
-	//	if (body1 == plants.phys_plants[2] && takePlant2 && walleFree)
-	//	{
-	//		if (countPlants < 3)
-	//		{
-	//			takePlant3 = true;
-	//			walleFree = false;
-	//			//App->audio->PlayFx(pickupFx);
-	//			countPlants = 3;
-	//		}
-	//	}
-	//	if (body1 == plants.phys_plants[3] && takePlant3 && walleFree)
-	//	{
-	//		if (countPlants < 4)
-	//		{
-	//			takePlant4 = true;
-	//			walleFree = false;
-	//			//App->audio->PlayFx(pickupFx);
-	//			countPlants = 4;
-	//		}
-	//	}
-	//	if (body1 == plants.phys_plants[4] && takePlant4 && walleFree)
-	//	{
-	//		if (countPlants < 5)
-	//		{
-	//			takePlant5 = true;
-	//			walleFree = false;
-	//			//App->audio->PlayFx(pickupFx);
-	//			countPlants = 5;
-	//		}
+	
 	//	}
 		/*if (body1 == hospitalSensor) && !ambulanceFree)
 		{
@@ -1290,13 +1237,10 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 			App->audio->PlayFx(hospitalFx);
 
 
-			if (countHospitalPatients < 1 && pickUpPatient1) countHospitalPatients = 1;
-			if (countHospitalPatients < 2 && pickUpPatient2) countHospitalPatients = 2;
-			if (countHospitalPatients < 3 && pickUpPatient3) countHospitalPatients = 3;
-			if (countHospitalPatients < 4 && pickUpPatient4) countHospitalPatients = 4;
-			if (countHospitalPatients < 5 && pickUpPatient5)
+			if (countCarriedPlant < 1 && pickUpPlant1) countCarriedPlant = 1;
+
 			{
-				countHospitalPatients = 5;
+				countCarriedPlant = 1;
 				App->audio->StopMusic();
 				App->audio->PlayMusic("Assets/Sound/victory.ogg");
 				App->player->SetWinPosition();
@@ -1312,7 +1256,7 @@ update_status ModuleSceneIntro::PostUpdate(float dt)
 	for (uint i = 0; i < primitives.Count(); i++)
 		primitives[i]->Render();
 	
-	/*if (countCarriedPlants == 5 && countPlants == 5)
+	/*if (countCarriedPlant == 5 && countPlant == 5)
 	{
 		for (uint i = 0; i < winPrimitives.Count(); i++)
 			winPrimitives[i]->Render();
@@ -1330,13 +1274,13 @@ void ModuleSceneIntro::CreatePlant(const vec3 pos, Color pColorHead, Color pColo
 	c = new Cube(0.5, 2, 0.5);
 	c->color = pColorBody;
 	c->SetPos(pos.x, pos.y + 1.5, pos.z);
-	//plants.body.PushBack(c);
+	//plant.body.PushBack(c);
 
 	// Create a sensor to be able to pick patients
 	Cube* sensor;
 	sensor = new Cube(1, 3, 1);
 	sensor->SetPos(pos.x, pos.y + 2, pos.z);
-	//plants.phys_plants.PushBack(App->physics->AddBody(*sensor, this, 0.0f, true));
+	//plants.phys_plant.PushBack(App->physics->AddBody(*sensor, this, 0.0f, true));
 }
 
 void ModuleSceneIntro::CreatePSaveSpotSensor(const vec3 pos)
