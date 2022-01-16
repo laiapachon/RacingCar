@@ -159,7 +159,7 @@ update_status ModulePlayer::Update(float dt)
 	char title[80];
 	
 
-	if (minutes >= 1) {
+	if (minutes >= 5) {
 		timer.Stop();
 		sprintf_s(title, "Wasted");
 		App->window->SetTitle(title);

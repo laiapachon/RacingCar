@@ -229,27 +229,31 @@ bool ModuleSceneIntro::Start()
 
 	cube32 = new Cube(20, 1, 20);
 	cube32->SetPos(-48, 12, 578);
-	cube32->color = Brown1;
+	cube32->color = Green;
 	cubes.add(cube32);
 	physBodyCubes.add(App->physics->AddBody(*cube32, 0));
+	physBodyCubes.getLast()->data->body->setFriction(0.00f);
 
 	cube33 = new Cube(20, 1, 20);
 	cube33->SetPos(-48, 12, 598);
-	cube33->color = Oxid;
+	cube33->color = Green;
 	cubes.add(cube33);
 	physBodyCubes.add(App->physics->AddBody(*cube33, 0));
+	physBodyCubes.getLast()->data->body->setFriction(0.00f);
 
 	cube34 = new Cube(20, 1, 20);
 	cube34->SetPos(-48, 12, 618);
-	cube34->color = Cobre;
+	cube34->color = Green;
 	cubes.add(cube34);
 	physBodyCubes.add(App->physics->AddBody(*cube34, 0));
+	physBodyCubes.getLast()->data->body->setFriction(0.00f);
 
 	cube35 = new Cube(20, 1, 20);
 	cube35->SetPos(-48, 12, 638);
-	cube35->color = Oxid;
+	cube35->color = Green;
 	cubes.add(cube35);
 	physBodyCubes.add(App->physics->AddBody(*cube35, 0));
+	//physBodyCubes.getLast()->data->body->setFriction(100000.00f);
 
 	//OBSTACULOS
 
@@ -988,6 +992,7 @@ bool ModuleSceneIntro::Start()
 	cube138->color = Oxid;
 	cubes.add(cube138);
 	physBodyCubes.add(App->physics->AddBody(*cube138, 0));
+	
 
 	cube139 = new Cube(20, 1, 20);
 	cube139->SetPos(-228, 12, 838);
@@ -1015,7 +1020,7 @@ bool ModuleSceneIntro::Start()
 
 	//obstaculos2
 	cube158 = new Cube(4, 40, 4);
-	cube158->SetPos(-22, 32, 818);
+	cube158->SetPos(-232, 32, 818);
 	cube158->color = Oxid;
 	cubes.add(cube158);
 	physBodyCubes.add(App->physics->AddBody(*cube158, 0));
@@ -1192,6 +1197,24 @@ update_status ModuleSceneIntro::Update(float dt)
 	cube140->Render();
 	cube141->Render();
 	cube142->Render();
+	cube143->Render();
+	cube144->Render();
+	cube145->Render();
+	cube146->Render();
+	cube147->Render();
+	cube148->Render();
+	cube149->Render();
+	cube150->Render();
+	cube151->Render();
+	cube152->Render();
+	cube153->Render();
+	cube154->Render();
+	cube155->Render();
+	cube156->Render();
+	cube157->Render();
+	cube158->Render();
+	cube159->Render();
+	cube160->Render();
 
 	//// Plants Render
 	//if (!takePlant1 && !inSceneWin)
