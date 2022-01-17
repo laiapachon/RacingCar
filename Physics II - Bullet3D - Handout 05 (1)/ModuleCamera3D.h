@@ -25,6 +25,9 @@ private:
 public:
 	
 	vec3 X, Y, Z, Position, Reference;
+	float playerPosX = 0.0;
+	float playerPosY = 0.0;
+	float playerPosZ = 0.0;
 
 private:
 

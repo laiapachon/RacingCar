@@ -214,6 +214,8 @@ public:
 	Cube* cube158;
 	Cube* cube159;
 	Cube* cube160;
+	Cube* cube161;
+	Cube* cube162;
 
 
 
@@ -229,7 +231,7 @@ public:
 	int countCarriedPlant = 0;
 	bool walleFree = true;
 	bool inSceneWin = false;
-
+	bool dead = false;
 	/*private:
 		Timer winTimer;
 		float winDuration;*/

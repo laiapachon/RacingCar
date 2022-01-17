@@ -201,14 +201,14 @@ update_status ModulePlayer::Update(float dt)
 	return UPDATE_CONTINUE;
 }
 
-//void ModulePlayer::ResetGame()
-//{
-//	vehicle->SetVelocity(0, 0, 0);
-//	mat4x4 transform;
-//	transform.rotate(0, vec3(0, 0, 1));
-//	vehicle->SetTransform(&transform);
-//	vehicle->SetPos(-17, 0, -120);
-
+void ModulePlayer::ResetGame()
+{
+	vehicle->SetVelocity(0, 0, 0);
+	mat4x4 transform;
+	transform.rotate(0, vec3(0, 0, 1));
+	vehicle->SetTransform(&transform);
+	vehicle->SetPos(0, 0, 0);
+}
 //	timer.Start();
 //	App->scene_intro->takePlant = false;
 //	App->scene_intro->walleFree = true;

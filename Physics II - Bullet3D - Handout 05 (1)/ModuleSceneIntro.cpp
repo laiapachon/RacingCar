@@ -5,6 +5,7 @@
 #include "PhysBody3D.h"
 #include "PhysVehicle3D.h"
 #include "Globals.h"
+#include"ModuleCamera3D.h"
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -1038,6 +1039,18 @@ bool ModuleSceneIntro::Start()
 	physBodyCubes.add(App->physics->AddBody(*cube160, 0));
 
 
+	cube161 = new Cube(30, 1, 360);
+	cube161->SetPos(0, -1, 180);
+	cube161->color = Oxid;
+	cubes.add(cube161);
+	physBodyCubes.add(App->physics->AddBody(*cube161, 0));
+
+	cube162 = new Cube(20, 1, 20);
+	cube162->SetPos(0, 0,200);
+	cube162->color = Oxid;
+	cubes.add(cube162);
+	physBodyCubes.add(App->physics->AddBody(*cube162, 0));
+
 	return ret;
 }
 
@@ -1052,6 +1065,13 @@ bool ModuleSceneIntro::CleanUp()
 // Update
 update_status ModuleSceneIntro::Update(float dt)
 {
+
+	if (App->camera->playerPosY-= -20) {
+		dead = true;
+	}
+	if (dead == true) {
+		App->player->vehicle->SetPos(0,0,0);
+	}
 	/*Plane p(0, 1, 0, 0);
 	p.axis = true;
 	p.Render();*/
@@ -1215,6 +1235,8 @@ update_status ModuleSceneIntro::Update(float dt)
 	cube158->Render();
 	cube159->Render();
 	cube160->Render();
+	cube161->Render();
+	cube162->Render();
 
 	//// Plants Render
 	//if (!takePlant1 && !inSceneWin)
