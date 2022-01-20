@@ -17,9 +17,10 @@ public:
 	void ResetGame();
 	bool Start();
 	void SetWinPosition();
+	void OnCollision(PhysBody3D* body1, PhysBody3D* body2) override;
 	update_status Update(float dt);
 	bool CleanUp();
-
+	void checkpointReapear(int checkpointPassed);
 public:
 
 	PhysVehicle3D* vehicle;
@@ -28,4 +29,6 @@ public:
 	float brake;
 	Timer timer;
 	float count = 0;
+	int checkpointFx;
+	int metaFx;
 };

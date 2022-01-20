@@ -5,6 +5,7 @@
 #include "Primitive.h"
 
 #define MAX_SNAKE 2
+#define INITIAL_TIME 60
 
 struct PhysBody3D;
 struct PhysMotor3D;
@@ -216,10 +217,11 @@ public:
 	Cube* cube160;
 	Cube* cube161;
 	Cube* cube162;
-
-
-
-
+	//
+	Cube sensor[30];
+	uint lap = 1;
+	uint timer = INITIAL_TIME;
+	Cube limits[100];
 	//map
 	Cube ground;
 
@@ -232,6 +234,7 @@ public:
 	bool walleFree = true;
 	bool inSceneWin = false;
 	bool dead = false;
+	int passedCheckpoints;
 	/*private:
 		Timer winTimer;
 		float winDuration;*/

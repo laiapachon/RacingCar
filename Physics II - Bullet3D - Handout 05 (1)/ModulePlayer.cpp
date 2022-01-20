@@ -17,7 +17,7 @@ ModulePlayer::~ModulePlayer()
 bool ModulePlayer::Start()
 {
 	LOG("Loading player");
-
+	//checkpointFx = App->audio->LoadFx("Assets/checkpoint.wav");
 	VehicleInfo car;
 
 	// Car properties ----------------------------------------
@@ -197,6 +197,8 @@ update_status ModulePlayer::Update(float dt)
 		vehicle->Brake(brake);
 
 	}
+
+	if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN) checkpointReapear(App->scene_intro->passedCheckpoints);
 	
 	return UPDATE_CONTINUE;
 }
@@ -209,6 +211,120 @@ void ModulePlayer::ResetGame()
 	vehicle->SetTransform(&transform);
 	vehicle->SetPos(0, 0, 0);
 }
+
+void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
+{
+	if (body2->id == 2 && App->scene_intro->sensor[0].wire == false)
+	{
+		if (App->scene_intro->passedCheckpoints == 3)
+		{
+			App->scene_intro->lap++;
+			App->scene_intro->sensor[0].wire = true;
+			App->audio->PlayFx(metaFx);
+			App->scene_intro->timer += 7;
+			App->scene_intro->passedCheckpoints = 0;
+			App->scene_intro->sensor[1].wire = false;
+			App->scene_intro->limits[37].color = Green;
+			App->scene_intro->limits[38].color = Green;
+			App->scene_intro->limits[41].color = Red;
+			App->scene_intro->limits[42].color = Red;
+			App->scene_intro->limits[45].color = Red;
+			App->scene_intro->limits[46].color = Red;
+			App->scene_intro->limits[53].color = Red;
+			App->scene_intro->limits[54].color = Red;
+			App->scene_intro->limits[49].color = Red;
+			App->scene_intro->limits[50].color = Red;
+		}
+	}
+	else if (body2->id == 3 && App->scene_intro->sensor[1].wire == false)
+	{
+		App->audio->PlayFx(checkpointFx);
+		App->scene_intro->passedCheckpoints++;
+		App->scene_intro->sensor[1].wire = true;
+		App->scene_intro->timer += 7;
+		App->scene_intro->sensor[2].wire = false;
+		App->scene_intro->limits[41].color = Green;
+		App->scene_intro->limits[42].color = Green;
+		App->scene_intro->limits[37].color = Red;
+		App->scene_intro->limits[38].color = Red;
+	}
+	else if (body2->id == 4 && App->scene_intro->sensor[2].wire == false)
+	{
+		App->audio->PlayFx(checkpointFx);
+		App->scene_intro->passedCheckpoints++;
+		App->scene_intro->sensor[2].wire = true;
+		App->scene_intro->timer += 7;
+		App->scene_intro->sensor[3].wire = false;
+		App->scene_intro->sensor[4].wire = false;
+		App->scene_intro->limits[45].color = Green;
+		App->scene_intro->limits[46].color = Green;
+	}
+	else if (body2->id == 5 && App->scene_intro->sensor[3].wire == false)
+	{
+		App->audio->PlayFx(checkpointFx);
+		App->scene_intro->passedCheckpoints++;
+		App->scene_intro->sensor[3].wire = true;
+		App->scene_intro->timer += 7;
+		App->scene_intro->sensor[4].wire = true;
+		App->scene_intro->sensor[0].wire = false;
+		App->scene_intro->limits[53].color = Green;
+		App->scene_intro->limits[54].color = Green;
+
+	}
+	else if (body2->id == 6 && App->scene_intro->sensor[4].wire == false)
+	{
+		App->audio->PlayFx(checkpointFx);
+		App->scene_intro->passedCheckpoints++;
+		App->scene_intro->sensor[4].wire = true;
+		App->scene_intro->timer += 7;
+		App->scene_intro->sensor[3].wire = true;
+		App->scene_intro->sensor[0].wire = false;
+		App->scene_intro->limits[49].color = Green;
+		App->scene_intro->limits[50].color = Green;
+	}
+}
+
+void ModulePlayer::checkpointReapear(int checkpointPassed)
+{
+	btQuaternion q;
+
+	switch (checkpointPassed)
+	{
+	case 0:
+		turn = 0;
+		acceleration = 0;
+		vehicle->SetPos(39, 0, 213);
+		q.setEuler(btScalar(180 * DEGTORAD), btScalar(0), btScalar(0));
+		vehicle->SetRotation(q);
+		vehicle->body->setLinearVelocity(btVector3(0, 0, 0));
+		break;
+	case 1:
+		turn = 0;
+		acceleration = 0;
+		vehicle->SetPos(235, 0, 150);
+		q.setEuler(btScalar(90 * DEGTORAD), btScalar(0), btScalar(0));
+		vehicle->SetRotation(q);
+		vehicle->body->setLinearVelocity(btVector3(0, 0, 0));
+		break;
+	case 2:
+		turn = 0;
+		acceleration = 0;
+		vehicle->SetPos(335, 0, 338);
+		q.setEuler(btScalar(90 * DEGTORAD), btScalar(0), btScalar(0));
+		vehicle->SetRotation(q);
+		vehicle->body->setLinearVelocity(btVector3(0, 0, 0));
+		break;
+	case 3:
+		turn = 0;
+		acceleration = 0;
+		vehicle->SetPos(475, 0, 442);
+		q.setEuler(btScalar(270 * DEGTORAD), btScalar(0), btScalar(0));
+		vehicle->SetRotation(q);
+		vehicle->body->setLinearVelocity(btVector3(0, 0, 0));
+		break;
+	}
+}
+
 //	timer.Start();
 //	App->scene_intro->takePlant = false;
 //	App->scene_intro->walleFree = true;

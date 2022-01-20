@@ -22,7 +22,7 @@ bool ModuleSceneIntro::Start()
 	
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
-
+	//passedCheckpoints = 0;
 
 	
 	//MAP
@@ -1050,6 +1050,172 @@ bool ModuleSceneIntro::Start()
 	cube162->color = Oxid;
 	cubes.add(cube162);
 	physBodyCubes.add(App->physics->AddBody(*cube162, 0));
+
+	//CHECKPOINT1----------------------------------------------
+	limits[35].SetPos(16, 0, 213);
+	limits[35].size.x = 1;
+	limits[35].size.y = 15;
+	limits[35].size.z = 1;
+	limits[35].axis = false;
+	limits[35].color = White;
+	App->physics->AddBody(limits[35], 0);
+
+	limits[36].SetPos(72, 0, 213);
+	limits[36].size.x = 1;
+	limits[36].size.y = 15;
+	limits[36].size.z = 1;
+	limits[36].axis = false;
+	limits[36].color = White;
+	App->physics->AddBody(limits[36], 0);
+
+	limits[37].SetPos(16, 8, 213);
+	limits[37].size.x = 4;
+	limits[37].size.y = 4;
+	limits[37].size.z = 4;
+	limits[37].axis = false;
+	limits[37].color = Red;
+	App->physics->AddBody(limits[37], 0);
+
+	limits[38].SetPos(72, 8, 213);
+	limits[38].size.x = 4;
+	limits[38].size.y = 4;
+	limits[38].size.z = 4;
+	limits[38].axis = false;
+	limits[38].color = Red;
+	App->physics->AddBody(limits[38], 0);
+
+	//CHECKPOINT2------------------------------------
+	limits[39].SetPos(255, 0, 122);
+	limits[39].size.x = 1;
+	limits[39].size.y = 15;
+	limits[39].size.z = 1;
+	limits[39].axis = false;
+	limits[39].color = White;
+	App->physics->AddBody(limits[39], 0);
+
+	limits[40].SetPos(255, 0, 178);
+	limits[40].size.x = 1;
+	limits[40].size.y = 15;
+	limits[40].size.z = 1;
+	limits[40].axis = false;
+	limits[40].color = White;
+	App->physics->AddBody(limits[40], 0);
+
+	limits[41].SetPos(255, 8, 122);
+	limits[41].size.x = 4;
+	limits[41].size.y = 4;
+	limits[41].size.z = 4;
+	limits[41].axis = false;
+	limits[41].color = Red;
+	App->physics->AddBody(limits[41], 0);
+
+	limits[42].SetPos(255, 8, 178);
+	limits[42].size.x = 4;
+	limits[42].size.y = 4;
+	limits[42].size.z = 4;
+	limits[42].axis = false;
+	limits[42].color = Red;
+	App->physics->AddBody(limits[42], 0);
+
+	//CHECKPOINT3------------------------------------
+	limits[43].SetPos(355, 0, 365);
+	limits[43].size.x = 1;
+	limits[43].size.y = 15;
+	limits[43].size.z = 1;
+	limits[43].axis = false;
+	limits[43].color = White;
+	App->physics->AddBody(limits[43], 0);
+
+	limits[44].SetPos(355, 0, 310);
+	limits[44].size.x = 1;
+	limits[44].size.y = 15;
+	limits[44].size.z = 1;
+	limits[44].axis = false;
+	limits[44].color = White;
+	App->physics->AddBody(limits[44], 0);
+
+	limits[45].SetPos(355, 8, 365);
+	limits[45].size.x = 4;
+	limits[45].size.y = 4;
+	limits[45].size.z = 4;
+	limits[45].axis = false;
+	limits[45].color = Red;
+	App->physics->AddBody(limits[45], 0);
+
+	limits[46].SetPos(355, 8, 310);
+	limits[46].size.x = 4;
+	limits[46].size.y = 4;
+	limits[46].size.z = 4;
+	limits[46].axis = false;
+	limits[46].color = Red;
+	App->physics->AddBody(limits[46], 0);
+
+	//CHECKPOINT4------------------------------------
+	limits[47].SetPos(400, 0, 429);
+	limits[47].size.x = 1;
+	limits[47].size.y = 15;
+	limits[47].size.z = 1;
+	limits[47].axis = false;
+	limits[47].color = White;
+	App->physics->AddBody(limits[47], 0);
+
+	limits[48].SetPos(400, 0, 388);
+	limits[48].size.x = 1;
+	limits[48].size.y = 15;
+	limits[48].size.z = 1;
+	limits[48].axis = false;
+	limits[48].color = White;
+	App->physics->AddBody(limits[48], 0);
+
+	limits[49].SetPos(400, 8, 429);
+	limits[49].size.x = 4;
+	limits[49].size.y = 4;
+	limits[49].size.z = 4;
+	limits[49].axis = false;
+	limits[49].color = Red;
+	App->physics->AddBody(limits[49], 0);
+
+	limits[50].SetPos(400, 8, 388);
+	limits[50].size.x = 4;
+	limits[50].size.y = 4;
+	limits[50].size.z = 4;
+	limits[50].axis = false;
+	limits[50].color = Red;
+	App->physics->AddBody(limits[50], 0);
+
+	//CHECKPOINT5------------------------------------
+	limits[51].SetPos(400, 0, 496);
+	limits[51].size.x = 1;
+	limits[51].size.y = 15;
+	limits[51].size.z = 1;
+	limits[51].axis = false;
+	limits[51].color = White;
+	App->physics->AddBody(limits[51], 0);
+
+	limits[52].SetPos(400, 0, 455);
+	limits[52].size.x = 1;
+	limits[52].size.y = 15;
+	limits[52].size.z = 1;
+	limits[52].axis = false;
+	limits[52].color = White;
+	App->physics->AddBody(limits[52], 0);
+
+	limits[53].SetPos(400, 8, 496);
+	limits[53].size.x = 4;
+	limits[53].size.y = 4;
+	limits[53].size.z = 4;
+	limits[53].axis = false;
+	limits[53].color = Red;
+	App->physics->AddBody(limits[53], 0);
+
+	limits[54].SetPos(400, 8, 455);
+	limits[54].size.x = 4;
+	limits[54].size.y = 4;
+	limits[54].size.z = 4;
+	limits[54].axis = false;
+	limits[54].color = Red;
+	App->physics->AddBody(limits[54], 0);
+	
 
 	return ret;
 }

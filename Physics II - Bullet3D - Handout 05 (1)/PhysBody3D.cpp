@@ -51,3 +51,11 @@ void PhysBody3D::SetVelocity(float x, float y, float z)
 {
 	body->setLinearVelocity(btVector3(x, y, z));
 }
+
+
+void PhysBody3D::SetRotation(btQuaternion q)
+{
+	btTransform t = body->getWorldTransform();
+	t.setRotation(q);
+	body->setWorldTransform(t);
+}
