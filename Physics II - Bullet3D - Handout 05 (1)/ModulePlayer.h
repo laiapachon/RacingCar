@@ -21,6 +21,8 @@ public:
 	update_status Update(float dt);
 	bool CleanUp();
 	void checkpointReapear(int checkpointPassed);
+	bool TocarPlanta(Plant* plant);
+
 public:
 
 	PhysVehicle3D* vehicle;

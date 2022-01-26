@@ -199,6 +199,8 @@ update_status ModulePlayer::Update(float dt)
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN) checkpointReapear(App->scene_intro->passedCheckpoints);
+
+
 	
 	return UPDATE_CONTINUE;
 }
@@ -324,6 +326,13 @@ void ModulePlayer::checkpointReapear(int checkpointPassed)
 		break;
 	}
 }
+
+/*bool ModulePlayer::TocarPlanta(Plant* plantaTocada) {
+	if ()
+		return true;
+}*/
+
+
 
 //	timer.Start();
 //	App->scene_intro->takePlant = false;
