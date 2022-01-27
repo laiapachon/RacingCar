@@ -1440,38 +1440,37 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 	//	}
 
 	
-	//	}
-		/*if (body1 == hospitalSensor) && !ambulanceFree)
+		
+		if (body1 == PSaveSpotSensor && !walleFree)
 		{
-			ambulanceFree = true;
-			App->audio->StopFx(App->player->sirenFx);
-			App->audio->PlayFx(hospitalFx);
+			walleFree = true;
+			//App->audio->StopFx(App->player->sirenFx);
+			//App->audio->PlayFx(hospitalFx);
 
 
-			if (countCarriedPlant < 1 && pickUpPlant1) countCarriedPlant = 1;
+			if (countCarriedPlant < 1 && takePlant) countCarriedPlant = 1;
 
 			{
 				countCarriedPlant = 1;
-				App->audio->StopMusic();
+				//App->audio->StopMusic();
 				App->audio->PlayMusic("Assets/Sound/victory.ogg");
 				App->player->SetWinPosition();
 				inSceneWin = true;
-				winTimer.Start();
+		
 			}
-		}*/
-	//}
-}
+		}
+ }
 
 update_status ModuleSceneIntro::PostUpdate(float dt)
 {
 	for (uint i = 0; i < primitives.Count(); i++)
 		primitives[i]->Render();
-	
-	/*if (countCarriedPlant == 5 && countPlant == 5)
-	{
-		for (uint i = 0; i < winPrimitives.Count(); i++)
-			winPrimitives[i]->Render();
-	}*/
+	//
+	//if (countCarriedPlant == 1)
+	//{
+	//	for (uint i = 0; i < winPrimitives.Count(); i++)
+	//		winPrimitives[i]->Render();
+	//}
 
 	return UPDATE_CONTINUE;
 }
@@ -1502,3 +1501,4 @@ void ModuleSceneIntro::CreatePSaveSpotSensor(const vec3 pos)
 	sensor->SetPos(pos.x, pos.y + 1.5, pos.z);
 	//PSaveSpotSensor = App->physics->AddBody(*sensor, this, 0.0f, true);
 }
+

@@ -235,7 +235,8 @@ public:
 	bool inSceneWin = false;
 	bool dead = false;
 	int passedCheckpoints;
-	/*private:
-		Timer winTimer;
-		float winDuration;*/
+	
+	//private:
+	//	Timer winTimer;
+	//	float winDuration;
 };

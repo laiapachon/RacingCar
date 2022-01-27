@@ -339,11 +339,11 @@ void ModulePlayer::checkpointReapear(int checkpointPassed)
 //	App->scene_intro->walleFree = true;
 //}
 
-//void ModulePlayer::SetWinPosition()
-//{
-//	vehicle->SetVelocity(0, 0, 0);
-//	mat4x4 transform;
-//	transform.rotate(0, vec3(0, 0, 1));
-//	vehicle->SetTransform(&transform);
-//	vehicle->SetPos(0, 0, -90);
-//}
+void ModulePlayer::SetWinPosition()
+{
+	vehicle->SetVelocity(0, 0, 0);
+	mat4x4 transform;
+	transform.rotate(0, vec3(0, 0, 1));
+	vehicle->SetTransform(&transform);
+	vehicle->SetPos(0, 0, -90);
+}
