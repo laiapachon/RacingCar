@@ -29,6 +29,8 @@ public:
 	void OnCollision(PhysBody3D* body1, PhysBody3D* body2);
 	void CreatePlant(const vec3 pos, Color pColorHead, Color pColorBody);
 	void CreatePSaveSpotSensor(const vec3 pos);
+	void Win();
+	void CreateWinSphere(const vec3 pos, float radius, Color color);
 public:
 	/*
 	PhysBody3D* pb_snake[MAX_SNAKE];
@@ -237,7 +239,13 @@ public:
 	bool dead = false;
 	int passedCheckpoints;
 	
-	//private:
-	//	Timer winTimer;
-	//	float winDuration;
+private:
+	int pickupFx;
+	int PSavespotFx;
+
+	//Timer doorTimer;
+	//bool doorClosed = true;
+	//Timer winTimer;
+	//float doorDuration;
+	float winDuration;
 };

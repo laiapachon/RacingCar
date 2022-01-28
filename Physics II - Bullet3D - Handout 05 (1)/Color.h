@@ -35,3 +35,7 @@ extern Color Grey;
 extern Color Oxid;
 extern Color Brown1;
 extern Color Cobre;
+extern Color Sky;
+extern Color Pink;
+extern Color DarkBlue;
+extern Color Orange;

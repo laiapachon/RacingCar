@@ -4,7 +4,6 @@
 #include "Primitive.h"
 #include "PhysBody3D.h"
 #include "PhysVehicle3D.h"
-#include "Globals.h"
 #include"ModuleCamera3D.h"
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
@@ -1477,54 +1476,16 @@ update_status ModuleSceneIntro::Update(float dt)
 	//}
 
 
-	///*if (countCarriedPlant == 1 && countPlant == 1)
-	//{
-	//	winDuration = winTimer.Read() * 0.001f;
-	//	Win();
-	//	for (uint i = 0; i < winPrimitives.Count(); i++)
-	//		winPrimitives[i]->Update();
-	//}*/
+/*	if (countCarriedPlant == 1 && countPlant == 1)
+	{
+		winDuration = winTimer.Read() * 0.001f;
+		Win();
+		for (uint i = 0; i < winPrimitives.Count(); i++)
+			winPrimitives[i]->Update();
+	}*/
 
 	return UPDATE_CONTINUE;
 }
-
-void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
-{
-	//// All cases for collisions with patients or hospital sensor
-	//if (body1->is_sensor && !inSceneWin)
-	//{
-	//	if (body1 == plant.phys_plant[0]&& walleFree)
-	//	{
-	//		if (countPlant < 1)
-	//		{
-	//			countPlant = 1;
-	//			takePlant = true;
-	//			walleFree = false;
-	//			//App->audio->PlayFx(pickupFx);
-	//		}
-	//	}
-
-	
-		
-		if (body1 == PSaveSpotSensor && !walleFree)
-		{
-			walleFree = true;
-			//App->audio->StopFx(App->player->sirenFx);
-			//App->audio->PlayFx(hospitalFx);
-
-
-			if (countCarriedPlant < 1 && takePlant) countCarriedPlant = 1;
-
-			{
-				countCarriedPlant = 1;
-				//App->audio->StopMusic();
-				App->audio->PlayMusic("Assets/Sound/victory.ogg");
-				App->player->SetWinPosition();
-				inSceneWin = true;
-		
-			}
-		}
- }
 
 update_status ModuleSceneIntro::PostUpdate(float dt)
 {
@@ -1540,6 +1501,49 @@ update_status ModuleSceneIntro::PostUpdate(float dt)
 	return UPDATE_CONTINUE;
 }
 
+//void ModuleSceneIntro::CreateWinSphere(const vec3 pos, float radius, Color color)
+//{
+//	float mass = 0.3f;
+//	Sphere* s = new Sphere(radius, mass);
+//	s->color = color;
+//	s->radius = radius;
+//	s->SetPos(pos.x, pos.y, pos.z);
+//
+//	winPrimitives.PushBack(s);
+//}
+
+/*void ModuleSceneIntro::Win()
+{
+	if (winDuration == 0.0f)
+	{
+		CreateWinSphere({ 0, 20, 0 }, 6, Red);
+		CreateWinSphere({ 20, 30, 40 }, 5, White);
+		CreateWinSphere({ 30, 20, 0 }, 4, Blue);
+		CreateWinSphere({ -30, 10, 0 }, 5, Green);
+		CreateWinSphere({ 50, 30, 70 }, 3, Yellow);
+		CreateWinSphere({ 40, 30, 50 }, 3, DarkBlue);
+		CreateWinSphere({ 0, 20, 30 }, 3, Oxid);
+		CreateWinSphere({ -50, 20, 15 }, 5, Green);
+		CreateWinSphere({ -10, 20, 45 }, 5, Cobre);
+		CreateWinSphere({ -70, 30, 20 }, 7, Orange);
+		CreateWinSphere({ 20, 20, -80 }, 3, Black);
+		CreateWinSphere({ 10, 30, -90 }, 4, Blue);
+		CreateWinSphere({ 60, 10, -30 }, 6, Pink);
+		CreateWinSphere({ -20, 20, -90 }, 3, Brown1);
+		CreateWinSphere({ -10, 10, -80 }, 2, DarkBlue);
+		CreateWinSphere({ 40, 20, -50 }, 10, White);
+
+		App->player->timer.Stop();
+	}
+	if (winDuration >= 10.0f)
+	{
+		App->player->ResetGame();
+		//App->audio->StopMusic();
+		App->audio->PlayMusic("Assets/Sound/dubstep.ogg");
+		inSceneWin = false;
+		//CleanWinScene();
+	}
+}*/
 
 void ModuleSceneIntro::CreatePlant(const vec3 pos, Color pColorHead, Color pColorBody)
 {
@@ -1566,4 +1570,42 @@ void ModuleSceneIntro::CreatePSaveSpotSensor(const vec3 pos)
 	sensor->SetPos(pos.x, pos.y + 1.5, pos.z);
 	//PSaveSpotSensor = App->physics->AddBody(*sensor, this, 0.0f, true);
 }
+
+void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
+{
+	// All cases for collisions with patients or hospital sensor
+	if (body1->is_sensor && !inSceneWin)
+	{
+		if (body1 == plant.phys_plant[0] && walleFree)
+		{
+			if (countPlant < 1)
+			{
+				countPlant = 1;
+				takePlant = true;
+				walleFree = false;
+				//App->audio->PlayFx(pickupFx);
+			}
+		}
+		if (body1 == PSaveSpotSensor && !walleFree)
+		{
+			walleFree = true;
+			//App->audio->StopFx(App->player->sirenFx);
+			//App->audio->PlayFx(hospitalFx);
+
+
+			if (countCarriedPlant < 1 && takePlant) countCarriedPlant = 1;
+	
+			{
+				countCarriedPlant = 1;
+				//App->audio->StopMusic();
+				//App->audio->PlayMusic("Assets/Sound/victory.ogg");
+				App->player->SetWinPosition();
+				inSceneWin = true;
+				//winTimer.Start();
+			}
+		}
+	}
+}
+
+
 
