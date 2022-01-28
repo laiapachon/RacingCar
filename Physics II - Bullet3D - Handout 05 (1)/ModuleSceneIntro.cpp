@@ -1216,7 +1216,8 @@ bool ModuleSceneIntro::Start()
 	limits[54].axis = false;
 	limits[54].color = Red;
 	App->physics->AddBody(limits[54], 0);
-	
+
+	//SENSOR
 	sensor[0].SetPos(0, 0, 213);
 	sensor[0].size.x = 40;
 	sensor[0].size.y = 15;

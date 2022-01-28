@@ -3,6 +3,7 @@
 #include "ModulePlayer.h"
 #include "Primitive.h"
 #include "PhysVehicle3D.h"
+#include"ModulePhysics3D.h"
 #include "PhysBody3D.h"
 #include"ModuleSceneIntro.h"
 
@@ -20,7 +21,7 @@ bool ModulePlayer::Start()
 	LOG("Loading player");
 	//checkpointFx = App->audio->LoadFx("Assets/checkpoint.wav");
 	VehicleInfo car;
-
+	checkpointFx = App->audio->LoadFx("Assets/checkpoint.wav");
 	// Car properties ----------------------------------------
 	car.chassis_size.Set(2, 1, 2);
 	car.chassis_offset.Set(0, 2, 0);
@@ -122,8 +123,10 @@ bool ModulePlayer::Start()
 	car.wheels[3].drive = false;
 	car.wheels[3].brake = true;
 	car.wheels[3].steering = false;
-
+	
 	vehicle = App->physics->AddVehicle(car);
+	vehicle->collision_listeners.add(this);
+	vehicle->SetId(1);
 	vehicle->SetPos(0, 2.5, 30);
 	
 	// ---------------------------------------------------------
