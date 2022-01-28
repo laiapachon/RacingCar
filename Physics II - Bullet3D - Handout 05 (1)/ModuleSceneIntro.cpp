@@ -172,7 +172,7 @@ bool ModuleSceneIntro::Start()
 	cubes.add(cube23);
 	physBodyCubes.add(App->physics->AddBody(*cube23, 0));
 
-	cube24 = new Cube(20, 1, 40);
+	cube24 = new Cube(20,0.5 , 40);
 	cube24->SetPos(-20, 0, 420);
 	cube24->SetRotation(140.0f, { 0,0.5,0 });
 	cube24->color = Brown1;
@@ -1045,14 +1045,15 @@ bool ModuleSceneIntro::Start()
 	cubes.add(cube161);
 	physBodyCubes.add(App->physics->AddBody(*cube161, 0));
 
-	cube162 = new Cube(20, 1, 20);
-	cube162->SetPos(0, 0,200);
+	cube162 = new Cube(28, 1, 58);
+	cube162->SetPos(-4, -1,380);
 	cube162->color = Oxid;
 	cubes.add(cube162);
+	cube162->SetRotation(165.0f, { 0,0.5,0 });
 	physBodyCubes.add(App->physics->AddBody(*cube162, 0));
 
 	//CHECKPOINT1----------------------------------------------
-	limits[35].SetPos(16, 0, 213);
+	limits[35].SetPos(-16, 0, 226);
 	limits[35].size.x = 1;
 	limits[35].size.y = 15;
 	limits[35].size.z = 1;
@@ -1060,7 +1061,7 @@ bool ModuleSceneIntro::Start()
 	limits[35].color = White;
 	App->physics->AddBody(limits[35], 0);
 
-	limits[36].SetPos(72, 0, 213);
+	limits[36].SetPos(16, 0, 223);
 	limits[36].size.x = 1;
 	limits[36].size.y = 15;
 	limits[36].size.z = 1;
@@ -1068,7 +1069,7 @@ bool ModuleSceneIntro::Start()
 	limits[36].color = White;
 	App->physics->AddBody(limits[36], 0);
 
-	limits[37].SetPos(16, 8, 213);
+	limits[37].SetPos(-16, 8, 223);
 	limits[37].size.x = 4;
 	limits[37].size.y = 4;
 	limits[37].size.z = 4;
@@ -1076,7 +1077,7 @@ bool ModuleSceneIntro::Start()
 	limits[37].color = Red;
 	App->physics->AddBody(limits[37], 0);
 
-	limits[38].SetPos(72, 8, 213);
+	limits[38].SetPos(16, 8, 223);
 	limits[38].size.x = 4;
 	limits[38].size.y = 4;
 	limits[38].size.z = 4;
@@ -1216,7 +1217,60 @@ bool ModuleSceneIntro::Start()
 	limits[54].color = Red;
 	App->physics->AddBody(limits[54], 0);
 	
+	sensor[0].SetPos(0, 0, 213);
+	sensor[0].size.x = 40;
+	sensor[0].size.y = 15;
+	sensor[0].size.z = 1;
+	sensor[0].axis = false;
+	sensor[0].wire = true;
+	sensor[0].color.Set(225, 225, 0);
+	physSensor = App->physics->AddBody(sensor[0], 0);
+	physSensor->SetAsSensor(true);
+	physSensor->SetId(2);
 
+	sensor[1].SetPos(248, 0, 150);
+	sensor[1].size.x = 1;
+	sensor[1].size.y = 15;
+	sensor[1].size.z = 40;
+	sensor[1].axis = false;
+	sensor[1].wire = false;
+	sensor[1].color.Set(225, 225, 0);
+	physSensor = App->physics->AddBody(sensor[1], 0);
+	physSensor->SetAsSensor(true);
+	physSensor->SetId(3);
+
+	sensor[2].SetPos(348, 0, 338);
+	sensor[2].size.x = 1;
+	sensor[2].size.y = 15;
+	sensor[2].size.z = 40;
+	sensor[2].axis = false;
+	sensor[2].wire = true;
+	sensor[2].color.Set(225, 225, 0);
+	physSensor = App->physics->AddBody(sensor[2], 0);
+	physSensor->SetAsSensor(true);
+	physSensor->SetId(4);
+
+	sensor[3].SetPos(407, 0, 476);
+	sensor[3].size.x = 1;
+	sensor[3].size.y = 15;
+	sensor[3].size.z = 30;
+	sensor[3].axis = false;
+	sensor[3].wire = true;
+	sensor[3].color.Set(225, 225, 0);
+	physSensor = App->physics->AddBody(sensor[3], 0);
+	physSensor->SetAsSensor(true);
+	physSensor->SetId(5);
+
+	sensor[4].SetPos(407, 0, 408);
+	sensor[4].size.x = 1;
+	sensor[4].size.y = 15;
+	sensor[4].size.z = 30;
+	sensor[4].axis = false;
+	sensor[4].wire = true;
+	sensor[4].color.Set(225, 225, 0);
+	physSensor = App->physics->AddBody(sensor[4], 0);
+	physSensor->SetAsSensor(true);
+	physSensor->SetId(6);
 	return ret;
 }
 
@@ -1232,12 +1286,10 @@ bool ModuleSceneIntro::CleanUp()
 update_status ModuleSceneIntro::Update(float dt)
 {
 
-	if (App->camera->playerPosY-= -20) {
-		dead = true;
+	if (App->camera->playerPosY-= -5) {
+		App->camera->playerPosY=2;
 	}
-	if (dead == true) {
-		App->player->vehicle->SetPos(0,0,0);
-	}
+	
 	/*Plane p(0, 1, 0, 0);
 	p.axis = true;
 	p.Render();*/
@@ -1403,6 +1455,18 @@ update_status ModuleSceneIntro::Update(float dt)
 	cube160->Render();
 	cube161->Render();
 	cube162->Render();
+
+
+	for (int i = 0; i < 62; i++)
+	{
+		limits[i].Render();
+	}
+	
+	for (int i = 0; i < 27; i++)
+	{
+		sensor[i].Render();
+	}
+
 
 	//// Plants Render
 	//if (!takePlant1 && !inSceneWin)

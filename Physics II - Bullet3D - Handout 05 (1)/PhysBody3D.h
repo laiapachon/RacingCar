@@ -21,11 +21,16 @@ public:
 	void SetPos(float x, float y, float z);
 	void SetVelocity(float x, float y, float z);
 	void SetRotation(btQuaternion q);
+
+	void SetAsSensor(bool is_sensor);
+	void SetId(int id);
+
 private:
 	
 
 	
 public:
+	//const vec3 GetPos() const;
 	btRigidBody* body = nullptr;
 	p2List<Module*> collision_listeners;
 	bool is_sensor = false;

@@ -228,6 +228,7 @@ public:
 	//Plants
 	Plant plant;
 	PhysBody3D* PSaveSpotSensor;
+	PhysBody3D* physSensor;
 	bool takePlant = false;
 	int countPlant = 0;
 	int countCarriedPlant = 0;
