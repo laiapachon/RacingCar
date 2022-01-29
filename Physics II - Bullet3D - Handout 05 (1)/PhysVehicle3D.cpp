@@ -149,6 +149,16 @@ void PhysVehicle3D::Brake(float force)
 	}
 }
 
+
+vec3 PhysVehicle3D::GetForwardVector() const
+{
+	btVector3 a = vehicle->getForwardVector();
+	vec3 ret;
+	ret.Set(a.getX(), a.getY(), a.getZ());
+	return ret;
+}
+
+
 // ----------------------------------------------------------------------------
 void PhysVehicle3D::Turn(float degrees)
 {

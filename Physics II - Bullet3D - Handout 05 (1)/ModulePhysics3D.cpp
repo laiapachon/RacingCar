@@ -430,6 +430,63 @@ void ModulePhysics3D::AddConstraintHinge(PhysBody3D& bodyA, PhysBody3D& bodyB, c
 	hinge->setDbgDrawSize(2.0f);
 }
 
+void ModulePhysics3D::Drag(const VehicleInfo& info, PhysVehicle3D& vehicle)
+{
+	float cd = 0.8;
+	float densidada = 0.18;
+	float superficie = 24;
+
+	if (DragEnabled)
+	{
+		if (vehicle.GetForwardVector().x >= 0)
+		{
+			Fdx = -0.5 * densidada * vehicle.GetKmh() * superficie * cd;
+		}
+		else if (vehicle.GetForwardVector().x < 0)
+		{
+			Fdx = 0.5 * densidada * vehicle.GetKmh() * superficie * cd;
+		}
+		else
+		{
+			Fdx = 0;
+		}
+
+		if (vehicle.GetForwardVector().y >= 0)
+		{
+			Fdy = -0.5 * densidada * vehicle.GetKmh() * superficie * cd;
+		}
+		else if (vehicle.GetForwardVector().y < 0)
+		{
+			Fdy = 0.5 * densidada * vehicle.GetKmh() * superficie * cd;
+		}
+		else
+		{
+			Fdy = 0;
+		}
+		
+		if (vehicle.GetForwardVector().z >= 0)
+		{
+			Fdz = -0.5 * densidada * vehicle.GetKmh() * superficie * cd;
+		}
+		else if (vehicle.GetForwardVector().z < 0)
+		{
+			Fdz = 0.5 * densidada * vehicle.GetKmh() * superficie * cd;
+		}
+		else
+		{
+			Fdz = 0;
+		}
+	}
+	else
+	{
+		Fdx = 0;
+		Fdy = 0;
+		Fdz = 0;
+	}
+}
+
+
+
 // =============================================
 void DebugDrawer::drawLine(const btVector3& from, const btVector3& to, const btVector3& color)
 {

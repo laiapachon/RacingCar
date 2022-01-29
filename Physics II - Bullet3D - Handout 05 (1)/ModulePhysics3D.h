@@ -35,9 +35,16 @@ public:
 	void AddConstraintP2P(PhysBody3D& bodyA, PhysBody3D& bodyB, const vec3& anchorA, const vec3& anchorB);
 	void AddConstraintHinge(PhysBody3D& bodyA, PhysBody3D& bodyB, const vec3& anchorA, const vec3& anchorB, const vec3& axisS, const vec3& axisB, bool disable_collision = false);
 
+	void Drag(const VehicleInfo& info, PhysVehicle3D& vehicle);
+
+	float Fdx = 0, Fdy = 0, Fdz = 0;
+
+
 private:
 
 	bool debug;
+
+	bool DragEnabled = true;
 
 	btDefaultCollisionConfiguration*	collision_conf;
 	btCollisionDispatcher*				dispatcher;
