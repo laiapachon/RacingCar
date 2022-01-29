@@ -131,7 +131,7 @@ bool ModulePlayer::Start()
 	
 	// ---------------------------------------------------------
 // Window info print
-	char title[200];
+	//char title[200];
 	//sprintf_s(title, "%.1f Km/h || Time: %.2f",
 		//vehicle->GetKmh(), App->scene_intro-> count);
 	//App->window->SetTitle(title);
@@ -153,15 +153,24 @@ update_status ModulePlayer::Update(float dt)
 	turn = acceleration = brake = 0.0f;
 
 	
-
 	
-
+	
+	//vehicle->RenderPlant();
 	vehicle->Render();
 	uint miliseconds = timer.Read() % 1000;
 	uint seconds = (timer.Read() / 1000) % 60;
 	uint minutes = (timer.Read() / 1000) / 60;
-	char title[80];
+	char title[200];
+
+
 	
+	/*if (App->scene_intro->walleFree) vehicle->Render();
+	else
+	{
+		if (countInt % 2 == 0) vehicle->Render();
+		else vehicle->RenderPlant();
+		//App->audio->PlayFx(sirenFx, 1);
+	}*/
 
 	if (minutes >= 5) {
 		timer.Stop();
@@ -210,10 +219,20 @@ update_status ModulePlayer::Update(float dt)
 
 		vehicle->body->setLinearVelocity(btVector3(vel.getX() * friction, vel.getY(), vel.getZ() * friction));
 	}*/
+
+
+	// ---------------------------------------------------------
+// Window info print
+	
+	sprintf_s(title, "%.1f Km/h || Plant taken: %d/5 || Plant save %d/5 || Time: %.2f",
+		vehicle->GetKmh(), App->scene_intro->countPlant, App->scene_intro->countCarriedPlant, count);
+	App->window->SetTitle(title);
 	
 	
+
 	return UPDATE_CONTINUE;
 }
+
 
 void ModulePlayer::ResetGame()
 {
@@ -222,6 +241,13 @@ void ModulePlayer::ResetGame()
 	transform.rotate(0, vec3(0, 0, 1));
 	vehicle->SetTransform(&transform);
 	vehicle->SetPos(0, 0, 0);
+	timer.Start();
+
+	App->scene_intro->takePlant = false;
+
+	App->scene_intro->countPlant = 0;
+	App->scene_intro->countCarriedPlant = 0;
+	App->scene_intro->walleFree = true;
 }
 
 void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
@@ -337,11 +363,11 @@ void ModulePlayer::checkpointReapear(int checkpointPassed)
 	}
 }
 
+
 /*bool ModulePlayer::TocarPlanta(Plant* plantaTocada) {
 	if ()
 		return true;
 }*/
-
 
 
 //	timer.Start();

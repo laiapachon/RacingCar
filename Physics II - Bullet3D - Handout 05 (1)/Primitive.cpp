@@ -110,6 +110,17 @@ Cube::Cube(float sizeX, float sizeY, float sizeZ) : Primitive(), size(sizeX, siz
 	type = PrimitiveTypes::Primitive_Cube;
 }
 
+/*Cube::Cube(const vec3& _size, float mass) : Primitive(), size(_size)
+{
+	type = PrimitiveTypes::Primitive_Cube;
+	body.SetBody(this, mass);
+}*/
+
+vec3 Cube::GetSize() const
+{
+	return size;
+}
+
 void Cube::InnerRender() const
 {	
 	float sx = size.x * 0.5f;
@@ -185,6 +196,22 @@ Cylinder::Cylinder(float radius, float height) : Primitive(), radius(radius), he
 	type = PrimitiveTypes::Primitive_Cylinder;
 }
 
+float Cylinder::GetRadius() const
+{
+	return radius;
+}
+
+float Cylinder::GetHeight() const
+{
+	return height;
+}
+void Cylinder::SetRadius(float n_radius) {
+	radius = n_radius;
+}
+
+void Cylinder::SetHeight(float n_height) {
+	height = n_height;
+}
 void Cylinder::InnerRender() const
 {
 	int n = 30;

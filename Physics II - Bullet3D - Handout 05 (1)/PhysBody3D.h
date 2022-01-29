@@ -24,9 +24,9 @@ public:
 	void SetVelocity(float x, float y, float z);
 	void SetRotation(btQuaternion q);
 	btRigidBody* GetBody() const;
-	/*void SetBody(Sphere* primitive, float mass);
-	void SetBody(Cube* primitive, float mass);
-	void SetBody(btCollisionShape* shape, Primitive* parent, float mass);*/
+	//void SetBody(Sphere* primitive, float mass);
+	//void SetBody(Cube* primitive, float mass);
+	//void SetBody(btCollisionShape* shape, Primitive* parent, float mass);
 	void SetAsSensor(bool is_sensor);
 	void SetId(int id);
 	

@@ -41,7 +41,9 @@ class Cube : public Primitive
 {
 public :
 	Cube();
+	//Cube(const vec3& size = vec3(1.f, 1.f, 1.f), float mass = 1.f);
 	Cube(float sizeX, float sizeY, float sizeZ);
+	vec3 GetSize() const;
 	void InnerRender() const;
 public:
 	vec3 size;
@@ -64,6 +66,10 @@ class Cylinder : public Primitive
 public:
 	Cylinder();
 	Cylinder(float radius, float height);
+	float GetRadius() const;
+	float GetHeight() const;
+	void SetRadius(float radius);
+	void SetHeight(float height);
 	void InnerRender() const;
 public:
 	float radius;

@@ -27,10 +27,12 @@ public:
 
 	PhysVehicle3D* vehicle;
 	float turn;
+	int countInt = 0;
 	float acceleration;
 	float brake;
 	Timer timer;
 	float count = 0;
 	int checkpointFx;
 	int metaFx;
+
 };

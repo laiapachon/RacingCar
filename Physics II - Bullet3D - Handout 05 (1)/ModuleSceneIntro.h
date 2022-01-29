@@ -240,7 +240,8 @@ public:
 	bool dead = false;
 	int passedCheckpoints;
 	bool hielo = false;
-	
+	bool PlantaTocada = false;
+
 private:
 	int pickupFx;
 	int PSavespotFx;

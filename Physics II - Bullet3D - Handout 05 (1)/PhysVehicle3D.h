@@ -66,7 +66,7 @@ public:
 	void Brake(float force);
 	void Turn(float degrees);
 	float GetKmh() const;
-
+	void RenderPlant();
 	vec3 GetForwardVector() const;
 
 public:

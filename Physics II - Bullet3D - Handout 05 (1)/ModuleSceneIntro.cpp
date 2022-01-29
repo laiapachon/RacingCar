@@ -1471,12 +1471,12 @@ update_status ModuleSceneIntro::Update(float dt)
 	}
 
 
-	//// Plants Render
-	//if (!takePlant1 && !inSceneWin)
-	//{
-	//
-	//	plants.body[0]->Render();
-	//}
+	// Plants Render
+	if (!takePlant && !inSceneWin)
+	{
+	
+		plant.body[0]->Render();
+	}
 
 
 /*	if (countCarriedPlant == 1 && countPlant == 1)
@@ -1556,13 +1556,13 @@ void ModuleSceneIntro::CreatePlant(const vec3 pos, Color pColorHead, Color pColo
 	c = new Cube(0.5, 2, 0.5);
 	c->color = pColorBody;
 	c->SetPos(pos.x, pos.y + 1.5, pos.z);
-	//plant.body.PushBack(c);
+	plant.body.PushBack(c);
 
 	// Create a sensor to be able to pick patients
 	Cube* sensor;
 	sensor = new Cube(1, 3, 1);
 	sensor->SetPos(pos.x, pos.y + 2, pos.z);
-	//plants.phys_plant.PushBack(App->physics->AddBody(*sensor, this, 0.0f, true));
+	//plant.phys_plant.PushBack(App->physics->AddBody(*sensor, this, 0.0f, true));
 }
 
 void ModuleSceneIntro::CreatePSaveSpotSensor(const vec3 pos)
@@ -1587,24 +1587,6 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 				takePlant = true;
 				walleFree = false;
 				//App->audio->PlayFx(pickupFx);
-			}
-		}
-		if (body1 == PSaveSpotSensor && !walleFree)
-		{
-			walleFree = true;
-			//App->audio->StopFx(App->player->sirenFx);
-			//App->audio->PlayFx(hospitalFx);
-
-
-			if (countCarriedPlant < 1 && takePlant) countCarriedPlant = 1;
-	
-			{
-				countCarriedPlant = 1;
-				//App->audio->StopMusic();
-				//App->audio->PlayMusic("Assets/Sound/victory.ogg");
-				App->player->SetWinPosition();
-				inSceneWin = true;
-				//winTimer.Start();
 			}
 		}
 	}
