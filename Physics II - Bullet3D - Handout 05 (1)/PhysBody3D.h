@@ -29,7 +29,7 @@ public:
 	void SetBody(btCollisionShape* shape, Primitive* parent, float mass);*/
 	void SetAsSensor(bool is_sensor);
 	void SetId(int id);
-
+	
 private:
 	
 	

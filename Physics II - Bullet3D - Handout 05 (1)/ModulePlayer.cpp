@@ -204,7 +204,13 @@ update_status ModulePlayer::Update(float dt)
 
 	if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN) checkpointReapear(App->scene_intro->passedCheckpoints);
 
+	btVector3 vel = vehicle->body->getLinearVelocity();
+	/*if () {
+		float friction = 0.99f;
 
+		vehicle->body->setLinearVelocity(btVector3(vel.getX() * friction, vel.getY(), vel.getZ() * friction));
+	}*/
+	
 	
 	return UPDATE_CONTINUE;
 }
@@ -226,7 +232,7 @@ void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 		{
 			App->scene_intro->lap++;
 			App->scene_intro->sensor[0].wire = true;
-			App->audio->PlayFx(metaFx);
+			App->audio->PlayFx(checkpointFx);
 			App->scene_intro->timer += 7;
 			App->scene_intro->passedCheckpoints = 0;
 			App->scene_intro->sensor[1].wire = false;

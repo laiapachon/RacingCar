@@ -233,6 +233,8 @@ bool ModuleSceneIntro::Start()
 	cubes.add(cube32);
 	physBodyCubes.add(App->physics->AddBody(*cube32, 0));
 	physBodyCubes.getLast()->data->body->setFriction(0.00f);
+	
+	
 
 	cube33 = new Cube(20, 1, 20);
 	cube33->SetPos(-48, 12, 598);
@@ -1457,6 +1459,7 @@ update_status ModuleSceneIntro::Update(float dt)
 	cube162->Render();
 
 
+
 	for (int i = 0; i < 62; i++)
 	{
 		limits[i].Render();
@@ -1606,6 +1609,4 @@ void ModuleSceneIntro::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 		}
 	}
 }
-
-
 

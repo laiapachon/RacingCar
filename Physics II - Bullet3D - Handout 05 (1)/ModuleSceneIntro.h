@@ -31,6 +31,7 @@ public:
 	void CreatePSaveSpotSensor(const vec3 pos);
 	void Win();
 	void CreateWinSphere(const vec3 pos, float radius, Color color);
+	
 public:
 	/*
 	PhysBody3D* pb_snake[MAX_SNAKE];
@@ -238,6 +239,7 @@ public:
 	bool inSceneWin = false;
 	bool dead = false;
 	int passedCheckpoints;
+	bool hielo = false;
 	
 private:
 	int pickupFx;
