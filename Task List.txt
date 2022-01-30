@@ -1,0 +1,16 @@
+Laia:
+- Idea
+- Mapa
+- Creación Wall-E
+- Planta
+- Sonido
+- Checkpoints y sensores
+- no se si me dejo algo, pero seguro q tambien lo he hecho yo
+
+Albert:
+- fuerzas
+- ayuda con la planta
+
+Joan:
+- intentó la planta
+- metió codigo para los checkpoints, pero NO funcional
