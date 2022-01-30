@@ -484,6 +484,60 @@ void ModulePhysics3D::Drag(const VehicleInfo& info, PhysVehicle3D& vehicle)
 		Fdz = 0;
 	}
 }
+void ModulePhysics3D::Lift(const VehicleInfo& info, PhysVehicle3D& vehicle)
+{
+	float cs = 0.01;
+	float densidada = 0.18;
+	float area = 24;
+
+	if (DragEnabled)
+	{
+		if (vehicle.GetForwardVector().x >= 0)
+		{
+			Flx = -0.5 * densidada * vehicle.GetKmh() * area * cs;
+		}
+		else if (vehicle.GetForwardVector().x < 0)
+		{
+			Flx = 0.5 * densidada * vehicle.GetKmh() * area * cs;
+		}
+		else
+		{
+			Flx = 0;
+		}
+
+		if (vehicle.GetForwardVector().y >= 0)
+		{
+			Fly = -0.5 * densidada * vehicle.GetKmh() * area * cs;
+		}
+		else if (vehicle.GetForwardVector().y < 0)
+		{
+			Fly = 0.5 * densidada * vehicle.GetKmh() * area * cs;
+		}
+		else
+		{
+			Fly = 0;
+		}
+
+		if (vehicle.GetForwardVector().z >= 0)
+		{
+			Flz = -0.5 * densidada * vehicle.GetKmh() * area * cs;
+		}
+		else if (vehicle.GetForwardVector().z < 0)
+		{
+			Flz = 0.5 * densidada * vehicle.GetKmh() * area * cs;
+		}
+		else
+		{
+			Flz = 0;
+		}
+	}
+	else
+	{
+		Flx = 0;
+		Fly = 0;
+		Flz = 0;
+	}
+}
 
 
 

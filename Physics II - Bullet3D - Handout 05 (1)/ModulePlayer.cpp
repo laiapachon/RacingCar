@@ -281,6 +281,11 @@ update_status ModulePlayer::Update(float dt)
 		vehicle->ApplyEngineForce(acceleration);
 		vehicle->Turn(turn);
 		vehicle->Brake(brake);
+
+		vehicle->Push(App->physics->Fdx, App->physics->Fdy, App->physics->Fdz);
+		vehicle->Push(App->physics->Flx, App->physics->Fly, App->physics->Flz);
+
+
 	}else if (planta == true) {
 		sprintf_s(title, "Time: %02d:%02d:%03d  Llevale la planta a Eva ", minutes, seconds, miliseconds);
 		App->window->SetTitle(title);

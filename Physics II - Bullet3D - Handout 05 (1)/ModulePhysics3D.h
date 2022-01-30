@@ -36,8 +36,11 @@ public:
 	void AddConstraintHinge(PhysBody3D& bodyA, PhysBody3D& bodyB, const vec3& anchorA, const vec3& anchorB, const vec3& axisS, const vec3& axisB, bool disable_collision = false);
 
 	void Drag(const VehicleInfo& info, PhysVehicle3D& vehicle);
+	void Lift(const VehicleInfo& info, PhysVehicle3D& vehicle);
 
 	float Fdx = 0, Fdy = 0, Fdz = 0;
+	float Flx = 0, Fly = 0, Flz = 0;
+
 	p2List<PhysBody3D*> bodies;
 	p2List<btCollisionShape*> shapes;
 private:
@@ -45,6 +48,7 @@ private:
 	bool debug;
 
 	bool DragEnabled = true;
+	bool LiftEnabled = true;
 
 	btDefaultCollisionConfiguration*	collision_conf;
 	btCollisionDispatcher*				dispatcher;
