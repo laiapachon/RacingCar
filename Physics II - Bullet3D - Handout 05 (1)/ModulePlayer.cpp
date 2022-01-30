@@ -18,10 +18,19 @@ ModulePlayer::~ModulePlayer()
 // Load assets
 bool ModulePlayer::Start()
 {
+	positionx = 0;
+	positiony = 2.5f;
+	positionz = 30;
 	LOG("Loading player");
 	//checkpointFx = App->audio->LoadFx("Assets/checkpoint.wav");
 	VehicleInfo car;
-	checkpointFx = App->audio->LoadFx("Assets/checkpoint.wav");
+	f1 = App->audio->LoadFx("Assets/audio/f1.wav");
+	wasted = App->audio->LoadFx("Assets/audio/wasted.wav");
+	buscarplanta = App->audio->LoadFx("Assets/audio/buscarplanta.wav");
+	tefaltaplanta = App->audio->LoadFx("Assets/audio/buscalaplantaprimero.wav");
+	eevaa = App->audio->LoadFx("Assets/audio/eeevaaa.wav");
+	Win = App->audio->LoadFx("Assets/audio/win.wav");
+	musica = App->audio->PlayMusic("Assets/audio/musica.ogg");
 	// Car properties ----------------------------------------
 	car.chassis_size.Set(2, 1, 2);
 	car.chassis_offset.Set(0, 2, 0);
@@ -127,7 +136,9 @@ bool ModulePlayer::Start()
 	vehicle = App->physics->AddVehicle(car);
 	vehicle->collision_listeners.add(this);
 	vehicle->SetId(1);
-	vehicle->SetPos(0, 2.5, 30);
+	vehicle->SetPos(positionx, positiony, positionz);
+	
+
 	
 	// ---------------------------------------------------------
 // Window info print
@@ -150,17 +161,66 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update(float dt)
 {
+	
 	turn = acceleration = brake = 0.0f;
+	vec3 pos = vehicle->GetPos();
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
+	{
+		vehicle->SetPos(0,2.5,30);
+		
+	}
+	if (pos.x == 0 && pos.y == 2.5 && pos.z == 30) {
+		F1 = true;
+		
+		
+	}
+	if (F1 == true) {
+		App->audio->PlayFx(f1);
+	}
+	F1 = false;
 
-	
-	
-	
+	if (F1 == false&& pos.x == 0 && pos.y == 2.5 && pos.z == 50) {
+		Buscarplanta = true;
+
+	}	
+	if (Buscarplanta == true) {
+		App->audio->PlayFx(buscarplanta);
+	}
+	Buscarplanta = false;
+
+	if (pos.y <= -20) {
+		vehicle->SetPos(positionx, positiony, positionz);
+	}
+	if (pos.x <= -386) {
+		planta = true;
+	}
+	if (pos.x <=-320 && pos.z <=538&&planta==true ) {
+		win = true;
+	}
+	if (pos.x <= -320 && pos.z <= 538 && planta == false) {
+		nohayplanta = true;
+		if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
+		{
+			vehicle->SetPos(0, 2.5, 30);
+			timer.Start();
+			planta = false;
+			
+		}
+	}
+	if (planta == true) {
+		//App->scene_intro->cube163->SetPos(1000, 1000, 1000);
+		App->scene_intro->cube164->SetPos(1000, 1000, 1000);
+		App->scene_intro->cube163->SetPos(1000, 1000, 10000);
+		
+	}
+	/*- 388, 12, 878*/
+	//-328, 0, 538
 	//vehicle->RenderPlant();
 	vehicle->Render();
 	uint miliseconds = timer.Read() % 1000;
 	uint seconds = (timer.Read() / 1000) % 60;
 	uint minutes = (timer.Read() / 1000) / 60;
-	char title[200];
+	char title[80];
 
 
 	
@@ -173,15 +233,122 @@ update_status ModulePlayer::Update(float dt)
 	}*/
 
 	if (minutes >= 5) {
+		
+		
 		timer.Stop();
 		sprintf_s(title, "Wasted");
 		App->window->SetTitle(title);
 		if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
 		{
+			vehicle->SetPos(0, 2.5, 30);
 			timer.Start();
 		}
-	}
-	else {
+	}else if(win==true) {
+		Winn = true;
+		
+		
+		sprintf_s(title, "Win");
+		App->window->SetTitle(title);
+		if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
+		{
+			vehicle->SetPos(0, 2.5, 30);
+			win = false;
+			timer.Start();
+			planta = false;
+			nohayplanta = false;
+		}
+		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+		{
+			acceleration = MAX_ACCELERATION;
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+		{
+			if (turn < TURN_DEGREES)
+				turn += TURN_DEGREES;
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+		{
+			if (turn > -TURN_DEGREES)
+				turn -= TURN_DEGREES;
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+		{
+			brake = BRAKE_POWER;
+		}
+		vehicle->ApplyEngineForce(acceleration);
+		vehicle->Turn(turn);
+		vehicle->Brake(brake);
+	}else if (planta == true) {
+		sprintf_s(title, "Time: %02d:%02d:%03d  Llevale la planta a Eva ", minutes, seconds, miliseconds);
+		App->window->SetTitle(title);
+		
+
+		
+			
+			
+			if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+			{
+				acceleration = MAX_ACCELERATION;
+			}
+
+			if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+			{
+				if (turn < TURN_DEGREES)
+					turn += TURN_DEGREES;
+			}
+
+			if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+			{
+				if (turn > -TURN_DEGREES)
+					turn -= TURN_DEGREES;
+			}
+
+			if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+			{
+				brake = BRAKE_POWER;
+			}
+			vehicle->ApplyEngineForce(acceleration);
+			vehicle->Turn(turn);
+			vehicle->Brake(brake);
+		
+	}else if (nohayplanta == true) {
+		App->audio->PlayFx(tefaltaplanta);
+		sprintf_s(title, "recoje la planta para Eva, press SPACE");
+		App->window->SetTitle(title);
+		if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT)
+		{
+			vehicle->SetPos(0, 2.5, 30);
+			win = false;
+
+		}
+		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
+		{
+			acceleration = MAX_ACCELERATION;
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
+		{
+			if (turn < TURN_DEGREES)
+				turn += TURN_DEGREES;
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
+		{
+			if (turn > -TURN_DEGREES)
+				turn -= TURN_DEGREES;
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+		{
+			brake = BRAKE_POWER;
+		}
+		vehicle->ApplyEngineForce(acceleration);
+		vehicle->Turn(turn);
+		vehicle->Brake(brake);
+	}else {
 		sprintf_s(title, "Time: %02d:%02d:%03d %.1f Km/h", minutes, seconds, miliseconds, vehicle->GetKmh());
 		App->window->SetTitle(title);
 		if (App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
@@ -210,6 +377,14 @@ update_status ModulePlayer::Update(float dt)
 		vehicle->Brake(brake);
 
 	}
+	if (Wasted == true) {
+		App->audio->PlayFx(wasted);
+	}
+	if (Winn == true) {
+		App->audio->PlayFx(Win);
+	}
+	Winn = false;
+	nohayplanta = false;
 
 	if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN) checkpointReapear(App->scene_intro->passedCheckpoints);
 
@@ -224,9 +399,9 @@ update_status ModulePlayer::Update(float dt)
 	// ---------------------------------------------------------
 // Window info print
 	
-	sprintf_s(title, "%.1f Km/h || Plant taken: %d/5 || Plant save %d/5 || Time: %.2f",
-		vehicle->GetKmh(), App->scene_intro->countPlant, App->scene_intro->countCarriedPlant, count);
-	App->window->SetTitle(title);
+	//sprintf_s(title, "%01f Km/h  Time: %0.2f",
+	//	vehicle->GetKmh(), /*App->scene_intro->countPlant, App->scene_intro->countCarriedPlant*/ count);
+	//App->window->SetTitle(title);
 	
 	
 
@@ -245,14 +420,14 @@ void ModulePlayer::ResetGame()
 
 	App->scene_intro->takePlant = false;
 
-	App->scene_intro->countPlant = 0;
-	App->scene_intro->countCarriedPlant = 0;
+	//App->scene_intro->countPlant = 0;
+	//App->scene_intro->countCarriedPlant = 0;
 	App->scene_intro->walleFree = true;
 }
 
 void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 {
-	if (body2->id == 2 && App->scene_intro->sensor[0].wire == false)
+	/*if (body2->id == 2 && App->scene_intro->sensor[0].wire == false)
 	{
 		if (App->scene_intro->passedCheckpoints == 3)
 		{
@@ -319,7 +494,7 @@ void ModulePlayer::OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 		App->scene_intro->sensor[0].wire = false;
 		App->scene_intro->limits[49].color = Green;
 		App->scene_intro->limits[50].color = Green;
-	}
+	}*/
 }
 
 void ModulePlayer::checkpointReapear(int checkpointPassed)

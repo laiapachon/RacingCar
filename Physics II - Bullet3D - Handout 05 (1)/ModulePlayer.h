@@ -21,7 +21,7 @@ public:
 	update_status Update(float dt);
 	bool CleanUp();
 	void checkpointReapear(int checkpointPassed);
-	bool TocarPlanta(Plant* plant);
+	//bool TocarPlanta(Plant* plant);
 
 public:
 
@@ -32,7 +32,26 @@ public:
 	float brake;
 	Timer timer;
 	float count = 0;
-	int checkpointFx;
-	int metaFx;
 
+	int f1;
+	int Win;
+	int buscarplanta;
+	int tefaltaplanta;
+	int wasted;
+	int eevaa;
+	int musica;
+	bool F1=false;
+	bool Winn=false;
+	bool Buscarplanta=false;
+	bool Tefaltaplanta=false;
+	bool Wasted=false;
+	bool Eevaa=false;
+
+	int metaFx;
+	float positionx = 0;
+	float positiony = 0;
+	float positionz = 0;
+	bool win = false;
+	bool planta = false;
+	bool nohayplanta = false;
 };

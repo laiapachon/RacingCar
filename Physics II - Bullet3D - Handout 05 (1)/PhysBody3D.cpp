@@ -29,14 +29,14 @@ void PhysBody3D::GetTransform(float* matrix) const
 		body->getWorldTransform().getOpenGLMatrix(matrix);
 	}
 }
-//const vec3 PhysBody3D::GetPos() const
-//{
-//	btTransform b = body->getWorldTransform();
-//	btVector3 vec = b.getOrigin();
-//	vec3 ret;
-//	ret.Set(vec.getX(), vec.getY(), vec.getZ());
-//	return ret;
-//}
+ const vec3 PhysBody3D::GetPos() const
+{
+	btTransform b = body->getWorldTransform();
+	btVector3 vec = b.getOrigin();
+	vec3 ret;
+	ret.Set(vec.getX(), vec.getY(), vec.getZ());
+	return ret;
+}
 // ---------------------------------------------------------
 void PhysBody3D::SetTransform(const float* matrix) const
 {
@@ -83,11 +83,11 @@ void PhysBody3D::SetAsSensor(bool is_sensor)
 	}
 }
 //// ---------------------------------------------------------
-/*btRigidBody* PhysBody3D::GetBody() const
+btRigidBody* PhysBody3D::GetBody() const
 {
 return body;
 }
-void PhysBody3D::SetBody(Sphere* primitive, float mass)
+/*void PhysBody3D::SetBody(Sphere* primitive, float mass)
 {
 	SetBody(new btSphereShape(primitive->GetRadius()),
 		primitive, mass);

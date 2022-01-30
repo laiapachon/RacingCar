@@ -38,8 +38,8 @@ public:
 	void Drag(const VehicleInfo& info, PhysVehicle3D& vehicle);
 
 	float Fdx = 0, Fdy = 0, Fdz = 0;
-
-
+	p2List<PhysBody3D*> bodies;
+	p2List<btCollisionShape*> shapes;
 private:
 
 	bool debug;
@@ -54,8 +54,8 @@ private:
 	btDefaultVehicleRaycaster*			vehicle_raycaster;
 	DebugDrawer*						debug_draw;
 
-	p2List<btCollisionShape*> shapes;
-	p2List<PhysBody3D*> bodies;
+	
+	
 	p2List<btDefaultMotionState*> motions;
 	p2List<btTypedConstraint*> constraints;
 	p2List<PhysVehicle3D*> vehicles;

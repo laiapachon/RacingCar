@@ -229,7 +229,7 @@ bool ModuleSceneIntro::Start()
 
 	cube32 = new Cube(20, 1, 20);
 	cube32->SetPos(-48, 12, 578);
-	cube32->color = Green;
+	cube32->color = Oxid;
 	cubes.add(cube32);
 	physBodyCubes.add(App->physics->AddBody(*cube32, 0));
 	physBodyCubes.getLast()->data->body->setFriction(0.00f);
@@ -238,21 +238,21 @@ bool ModuleSceneIntro::Start()
 
 	cube33 = new Cube(20, 1, 20);
 	cube33->SetPos(-48, 12, 598);
-	cube33->color = Green;
+	cube33->color = Brown1;
 	cubes.add(cube33);
 	physBodyCubes.add(App->physics->AddBody(*cube33, 0));
 	physBodyCubes.getLast()->data->body->setFriction(0.00f);
 
 	cube34 = new Cube(20, 1, 20);
 	cube34->SetPos(-48, 12, 618);
-	cube34->color = Green;
+	cube34->color = Cobre;
 	cubes.add(cube34);
 	physBodyCubes.add(App->physics->AddBody(*cube34, 0));
 	physBodyCubes.getLast()->data->body->setFriction(0.00f);
 
 	cube35 = new Cube(20, 1, 20);
 	cube35->SetPos(-48, 12, 638);
-	cube35->color = Green;
+	cube35->color = Oxid;
 	cubes.add(cube35);
 	physBodyCubes.add(App->physics->AddBody(*cube35, 0));
 	//physBodyCubes.getLast()->data->body->setFriction(100000.00f);
@@ -397,7 +397,7 @@ bool ModuleSceneIntro::Start()
 
 	cube97 = new Cube(20, 1, 20);
 	cube97->SetPos(-208, 12, 738);
-	cube97->color = Oxid;
+	cube97->color = Brown1;
 	cubes.add(cube97);
 	physBodyCubes.add(App->physics->AddBody(*cube97, 0));
 
@@ -409,7 +409,7 @@ bool ModuleSceneIntro::Start()
 
 	cube99 = new Cube(20, 1, 20);
 	cube99->SetPos(-208, 12, 778);
-	cube99->color = Oxid;
+	cube99->color = Cobre;
 	cubes.add(cube99);
 	physBodyCubes.add(App->physics->AddBody(*cube99, 0));
 
@@ -427,7 +427,7 @@ bool ModuleSceneIntro::Start()
 
 	cube102 = new Cube(20, 1, 20);
 	cube102->SetPos(-248, 12, 778);
-	cube102->color = Oxid;
+	cube102->color = Brown1;
 	cubes.add(cube102);
 	physBodyCubes.add(App->physics->AddBody(*cube102, 0));
 
@@ -445,7 +445,7 @@ bool ModuleSceneIntro::Start()
 
 	cube105 = new Cube(20, 1, 20);
 	cube105->SetPos(-308, 12, 778);
-	cube105->color = Oxid;
+	cube105->color = Brown1;
 	cubes.add(cube105);
 	physBodyCubes.add(App->physics->AddBody(*cube105, 0));
 
@@ -457,7 +457,7 @@ bool ModuleSceneIntro::Start()
 
 	cube107 = new Cube(20, 1, 20);
 	cube107->SetPos(-328, 12, 758);
-	cube107->color = Oxid;
+	cube107->color = Brown1;
 	cubes.add(cube107);
 	physBodyCubes.add(App->physics->AddBody(*cube107, 0));
 
@@ -469,7 +469,7 @@ bool ModuleSceneIntro::Start()
 
 	cube109 = new Cube(20, 1, 20);
 	cube109->SetPos(-328, 8, 718);
-	cube109->color = Oxid;
+	cube109->color = Cobre;
 	cubes.add(cube109);
 	physBodyCubes.add(App->physics->AddBody(*cube109, 0));
 
@@ -481,13 +481,13 @@ bool ModuleSceneIntro::Start()
 
 	cube111 = new Cube(20, 1, 20);
 	cube111->SetPos(-328, 2, 678);
-	cube111->color = Oxid;
+	cube111->color = Cobre;
 	cubes.add(cube111);
 	physBodyCubes.add(App->physics->AddBody(*cube111, 0));
 
 	cube112 = new Cube(20, 1, 20);
 	cube112->SetPos(-328, 0, 658);
-	cube112->color = Oxid;
+	cube112->color = Brown1;
 	cubes.add(cube112);
 	physBodyCubes.add(App->physics->AddBody(*cube112, 0));
 
@@ -499,7 +499,7 @@ bool ModuleSceneIntro::Start()
 
 	cube114 = new Cube(20, 1, 20);
 	cube114->SetPos(-328, 0, 618);
-	cube114->color = Oxid;
+	cube114->color = Brown1;
 	cubes.add(cube114);
 	physBodyCubes.add(App->physics->AddBody(*cube114, 0));
 
@@ -517,7 +517,7 @@ bool ModuleSceneIntro::Start()
 
 	cube117 = new Cube(20, 1, 20);
 	cube117->SetPos(-328, 0, 558);
-	cube117->color = Oxid;
+	cube117->color = Cobre;
 	cubes.add(cube117);
 	physBodyCubes.add(App->physics->AddBody(*cube117, 0));
 
@@ -835,55 +835,50 @@ bool ModuleSceneIntro::Start()
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	//FINAL
-	cube119 = new Cube(2, 2, 2);
-	cube119->SetPos(-328, 0, 518);
-	cube119->color = Brown1;
+	//EVA
+	cube119 = new Cube(8, 10, 8);
+	cube119->SetPos(-328, 2, 518);
+	cube119->color = White;
 	cubes.add(cube119);
 	physBodyCubes.add(App->physics->AddBody(*cube119, 0));
 
-	cube120 = new Cube(2, 2, 2);
-	cube120->SetPos(-324, 0, 518);
-	cube120->color = Brown1;
-	cubes.add(cube120);
-	physBodyCubes.add(App->physics->AddBody(*cube120, 0));
-
-	cube121 = new Cube(2, 2, 2);
-	cube121->SetPos(-332, 0, 518);
-	cube121->color = Brown1;
-	cubes.add(cube121);
-	physBodyCubes.add(App->physics->AddBody(*cube121, 0));
-
-	cube122 = new Cube(2, 2, 2);
-	cube122->SetPos(-328, 0, 514);
-	cube122->color = Brown1;
-	cubes.add(cube122);
-	physBodyCubes.add(App->physics->AddBody(*cube122, 0));
-
-	cube123 = new Cube(0.5, 1.5, 0.5);
-	cube123->SetPos(-328, 1, 514);
-	cube123->color = Green;
+	cube123 = new Cube(5, 5, 6);
+	cube123->SetPos(-328, 10, 518);
+	cube123->color = White;
 	cubes.add(cube123);
 	physBodyCubes.add(App->physics->AddBody(*cube123, 0));
 
-	cube124 = new Cube(0.5, 1.5, 0.5);
-	cube124->SetPos(-332, 1, 518);
-	cube124->color = Green;
+	cube124 = new Cube(2, 5, 2);
+	cube124->SetPos(-332, 3, 518);
+	cube124->color = White;
 	cubes.add(cube124);
 	physBodyCubes.add(App->physics->AddBody(*cube124, 0));
 
-	cube125 = new Cube(0.5, 1.5, 0.5);
-	cube125->SetPos(-324, 1, 518);
-	cube125->color = Green;
+	cube125 = new Cube(2, 5, 2);
+	cube125->SetPos(-324, 3, 518);
+	cube125->color = White;
 	cubes.add(cube125);
 	physBodyCubes.add(App->physics->AddBody(*cube125, 0));
 
-	cube126 = new Cube(0.5, 1.5, 0.5);
-	cube126->SetPos(-328, 1, 518);
-	cube126->color = Green;
+	cube126 = new Cube(3.5, 2.5, 1);
+	cube126->SetPos(-328, 11, 525);
+	cube126->color = Black;
 	cubes.add(cube126);
 	physBodyCubes.add(App->physics->AddBody(*cube126, 0));
 	
+
+	//PLANTA QUE RECOJE WALL-E
+	cube163 = new Cube(2, 2, 2);
+	cube163->SetPos(-388, 13, 878);
+	cube163->color = Brown1;
+	cubes.add(cube163);
+	//physBodyCubes.add(App->physics->AddBody(*cube163, 0));
+
+	cube164 = new Cube(0.5, 1.5, 0.5);
+	cube164->SetPos(-388, 14, 878);
+	cube164->color = Green;
+	cubes.add(cube164);
+	//physBodyCubes.add(App->physics->AddBody(*cube164, 0));
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	//CAMINOS TRAMPA
@@ -1087,136 +1082,136 @@ bool ModuleSceneIntro::Start()
 	App->physics->AddBody(limits[38], 0);
 
 	//CHECKPOINT2------------------------------------
-	limits[39].SetPos(255, 0, 122);
-	limits[39].size.x = 1;
-	limits[39].size.y = 15;
-	limits[39].size.z = 1;
-	limits[39].axis = false;
-	limits[39].color = White;
-	App->physics->AddBody(limits[39], 0);
+	//limits[39].SetPos(255, 0, 122);
+	//limits[39].size.x = 1;
+	//limits[39].size.y = 15;
+	//limits[39].size.z = 1;
+	//limits[39].axis = false;
+	//limits[39].color = White;
+	//App->physics->AddBody(limits[39], 0);
 
-	limits[40].SetPos(255, 0, 178);
-	limits[40].size.x = 1;
-	limits[40].size.y = 15;
-	limits[40].size.z = 1;
-	limits[40].axis = false;
-	limits[40].color = White;
-	App->physics->AddBody(limits[40], 0);
+	//limits[40].SetPos(255, 0, 178);
+	//limits[40].size.x = 1;
+	//limits[40].size.y = 15;
+	//limits[40].size.z = 1;
+	//limits[40].axis = false;
+	//limits[40].color = White;
+	//App->physics->AddBody(limits[40], 0);
 
-	limits[41].SetPos(255, 8, 122);
-	limits[41].size.x = 4;
-	limits[41].size.y = 4;
-	limits[41].size.z = 4;
-	limits[41].axis = false;
-	limits[41].color = Red;
-	App->physics->AddBody(limits[41], 0);
+	//limits[41].SetPos(255, 8, 122);
+	//limits[41].size.x = 4;
+	//limits[41].size.y = 4;
+	//limits[41].size.z = 4;
+	//limits[41].axis = false;
+	//limits[41].color = Red;
+	//App->physics->AddBody(limits[41], 0);
 
-	limits[42].SetPos(255, 8, 178);
-	limits[42].size.x = 4;
-	limits[42].size.y = 4;
-	limits[42].size.z = 4;
-	limits[42].axis = false;
-	limits[42].color = Red;
-	App->physics->AddBody(limits[42], 0);
+	//limits[42].SetPos(255, 8, 178);
+	//limits[42].size.x = 4;
+	//limits[42].size.y = 4;
+	//limits[42].size.z = 4;
+	//limits[42].axis = false;
+	//limits[42].color = Red;
+	//App->physics->AddBody(limits[42], 0);
 
-	//CHECKPOINT3------------------------------------
-	limits[43].SetPos(355, 0, 365);
-	limits[43].size.x = 1;
-	limits[43].size.y = 15;
-	limits[43].size.z = 1;
-	limits[43].axis = false;
-	limits[43].color = White;
-	App->physics->AddBody(limits[43], 0);
+	////CHECKPOINT3------------------------------------
+	//limits[43].SetPos(355, 0, 365);
+	//limits[43].size.x = 1;
+	//limits[43].size.y = 15;
+	//limits[43].size.z = 1;
+	//limits[43].axis = false;
+	//limits[43].color = White;
+	//App->physics->AddBody(limits[43], 0);
 
-	limits[44].SetPos(355, 0, 310);
-	limits[44].size.x = 1;
-	limits[44].size.y = 15;
-	limits[44].size.z = 1;
-	limits[44].axis = false;
-	limits[44].color = White;
-	App->physics->AddBody(limits[44], 0);
+	//limits[44].SetPos(355, 0, 310);
+	//limits[44].size.x = 1;
+	//limits[44].size.y = 15;
+	//limits[44].size.z = 1;
+	//limits[44].axis = false;
+	//limits[44].color = White;
+	//App->physics->AddBody(limits[44], 0);
 
-	limits[45].SetPos(355, 8, 365);
-	limits[45].size.x = 4;
-	limits[45].size.y = 4;
-	limits[45].size.z = 4;
-	limits[45].axis = false;
-	limits[45].color = Red;
-	App->physics->AddBody(limits[45], 0);
+	//limits[45].SetPos(355, 8, 365);
+	//limits[45].size.x = 4;
+	//limits[45].size.y = 4;
+	//limits[45].size.z = 4;
+	//limits[45].axis = false;
+	//limits[45].color = Red;
+	//App->physics->AddBody(limits[45], 0);
 
-	limits[46].SetPos(355, 8, 310);
-	limits[46].size.x = 4;
-	limits[46].size.y = 4;
-	limits[46].size.z = 4;
-	limits[46].axis = false;
-	limits[46].color = Red;
-	App->physics->AddBody(limits[46], 0);
+	//limits[46].SetPos(355, 8, 310);
+	//limits[46].size.x = 4;
+	//limits[46].size.y = 4;
+	//limits[46].size.z = 4;
+	//limits[46].axis = false;
+	//limits[46].color = Red;
+	//App->physics->AddBody(limits[46], 0);
 
-	//CHECKPOINT4------------------------------------
-	limits[47].SetPos(400, 0, 429);
-	limits[47].size.x = 1;
-	limits[47].size.y = 15;
-	limits[47].size.z = 1;
-	limits[47].axis = false;
-	limits[47].color = White;
-	App->physics->AddBody(limits[47], 0);
+	////CHECKPOINT4------------------------------------
+	//limits[47].SetPos(400, 0, 429);
+	//limits[47].size.x = 1;
+	//limits[47].size.y = 15;
+	//limits[47].size.z = 1;
+	//limits[47].axis = false;
+	//limits[47].color = White;
+	//App->physics->AddBody(limits[47], 0);
 
-	limits[48].SetPos(400, 0, 388);
-	limits[48].size.x = 1;
-	limits[48].size.y = 15;
-	limits[48].size.z = 1;
-	limits[48].axis = false;
-	limits[48].color = White;
-	App->physics->AddBody(limits[48], 0);
+	//limits[48].SetPos(400, 0, 388);
+	//limits[48].size.x = 1;
+	//limits[48].size.y = 15;
+	//limits[48].size.z = 1;
+	//limits[48].axis = false;
+	//limits[48].color = White;
+	//App->physics->AddBody(limits[48], 0);
 
-	limits[49].SetPos(400, 8, 429);
-	limits[49].size.x = 4;
-	limits[49].size.y = 4;
-	limits[49].size.z = 4;
-	limits[49].axis = false;
-	limits[49].color = Red;
-	App->physics->AddBody(limits[49], 0);
+	//limits[49].SetPos(400, 8, 429);
+	//limits[49].size.x = 4;
+	//limits[49].size.y = 4;
+	//limits[49].size.z = 4;
+	//limits[49].axis = false;
+	//limits[49].color = Red;
+	//App->physics->AddBody(limits[49], 0);
 
-	limits[50].SetPos(400, 8, 388);
-	limits[50].size.x = 4;
-	limits[50].size.y = 4;
-	limits[50].size.z = 4;
-	limits[50].axis = false;
-	limits[50].color = Red;
-	App->physics->AddBody(limits[50], 0);
+	//limits[50].SetPos(400, 8, 388);
+	//limits[50].size.x = 4;
+	//limits[50].size.y = 4;
+	//limits[50].size.z = 4;
+	//limits[50].axis = false;
+	//limits[50].color = Red;
+	//App->physics->AddBody(limits[50], 0);
 
-	//CHECKPOINT5------------------------------------
-	limits[51].SetPos(400, 0, 496);
-	limits[51].size.x = 1;
-	limits[51].size.y = 15;
-	limits[51].size.z = 1;
-	limits[51].axis = false;
-	limits[51].color = White;
-	App->physics->AddBody(limits[51], 0);
+	////CHECKPOINT5------------------------------------
+	//limits[51].SetPos(400, 0, 496);
+	//limits[51].size.x = 1;
+	//limits[51].size.y = 15;
+	//limits[51].size.z = 1;
+	//limits[51].axis = false;
+	//limits[51].color = White;
+	//App->physics->AddBody(limits[51], 0);
 
-	limits[52].SetPos(400, 0, 455);
-	limits[52].size.x = 1;
-	limits[52].size.y = 15;
-	limits[52].size.z = 1;
-	limits[52].axis = false;
-	limits[52].color = White;
-	App->physics->AddBody(limits[52], 0);
+	//limits[52].SetPos(400, 0, 455);
+	//limits[52].size.x = 1;
+	//limits[52].size.y = 15;
+	//limits[52].size.z = 1;
+	//limits[52].axis = false;
+	//limits[52].color = White;
+	//App->physics->AddBody(limits[52], 0);
 
-	limits[53].SetPos(400, 8, 496);
-	limits[53].size.x = 4;
-	limits[53].size.y = 4;
-	limits[53].size.z = 4;
-	limits[53].axis = false;
-	limits[53].color = Red;
-	App->physics->AddBody(limits[53], 0);
+	//limits[53].SetPos(400, 8, 496);
+	//limits[53].size.x = 4;
+	//limits[53].size.y = 4;
+	//limits[53].size.z = 4;
+	//limits[53].axis = false;
+	//limits[53].color = Red;
+	//App->physics->AddBody(limits[53], 0);
 
-	limits[54].SetPos(400, 8, 455);
-	limits[54].size.x = 4;
-	limits[54].size.y = 4;
-	limits[54].size.z = 4;
-	limits[54].axis = false;
-	limits[54].color = Red;
-	App->physics->AddBody(limits[54], 0);
+	//limits[54].SetPos(400, 8, 455);
+	//limits[54].size.x = 4;
+	//limits[54].size.y = 4;
+	//limits[54].size.z = 4;
+	//limits[54].axis = false;
+	//limits[54].color = Red;
+	//App->physics->AddBody(limits[54], 0);
 
 	//SENSOR
 	sensor[0].SetPos(0, 0, 213);
@@ -1230,7 +1225,7 @@ bool ModuleSceneIntro::Start()
 	physSensor->SetAsSensor(true);
 	physSensor->SetId(2);
 
-	sensor[1].SetPos(248, 0, 150);
+	/*sensor[1].SetPos(248, 0, 150);
 	sensor[1].size.x = 1;
 	sensor[1].size.y = 15;
 	sensor[1].size.z = 40;
@@ -1272,7 +1267,7 @@ bool ModuleSceneIntro::Start()
 	sensor[4].color.Set(225, 225, 0);
 	physSensor = App->physics->AddBody(sensor[4], 0);
 	physSensor->SetAsSensor(true);
-	physSensor->SetId(6);
+	physSensor->SetId(6);*/
 	return ret;
 }
 
@@ -1414,9 +1409,9 @@ update_status ModuleSceneIntro::Update(float dt)
 	cube117->Render();
 	cube118->Render();
 	cube119->Render();
-	cube120->Render();
-	cube121->Render();
-	cube122->Render();
+	
+	
+	
 	cube123->Render();
 	cube124->Render();
 	cube125->Render();
@@ -1469,24 +1464,12 @@ update_status ModuleSceneIntro::Update(float dt)
 	{
 		sensor[i].Render();
 	}
-
-
-	// Plants Render
-	if (!takePlant && !inSceneWin)
-	{
 	
-		plant.body[0]->Render();
+	if (App->player->planta == false) {
+		cube163->Render();
+		cube164->Render();
 	}
-
-
-/*	if (countCarriedPlant == 1 && countPlant == 1)
-	{
-		winDuration = winTimer.Read() * 0.001f;
-		Win();
-		for (uint i = 0; i < winPrimitives.Count(); i++)
-			winPrimitives[i]->Update();
-	}*/
-
+	
 	return UPDATE_CONTINUE;
 }
 

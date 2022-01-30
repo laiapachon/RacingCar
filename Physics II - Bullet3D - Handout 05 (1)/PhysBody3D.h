@@ -6,7 +6,7 @@
 class btQuaternion;
 class btRigidBody;
 class Module;
-
+class vec3;
 
 
 // =================================================
@@ -34,7 +34,7 @@ private:
 	
 	
 public:
-	//const vec3 GetPos() const;
+	const vec3 GetPos() const;
 	btRigidBody* body = nullptr;
 	p2List<Module*> collision_listeners;
 	bool is_sensor = false;

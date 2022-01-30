@@ -177,9 +177,7 @@ public:
 	Cube* cube117;
 	Cube* cube118;
 	Cube* cube119;
-	Cube* cube120;
-	Cube* cube121;
-	Cube* cube122;
+	
 	Cube* cube123;
 	Cube* cube124;
 	Cube* cube125;
@@ -220,6 +218,8 @@ public:
 	Cube* cube160;
 	Cube* cube161;
 	Cube* cube162;
+	Cube* cube163;
+	Cube* cube164;
 	//
 	Cube sensor[30];
 	uint lap = 1;
